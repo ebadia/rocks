@@ -1,5 +1,6 @@
 <?php
 
+// para saber mi ip, pero creo que no lo uso
 require 'myip.php';
 
 //*********************************
