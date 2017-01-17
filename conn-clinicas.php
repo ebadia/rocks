@@ -13,7 +13,6 @@ require 'myip.php';
     $murcia = array( gethostbyname('eneresicentral.dyndns.biz'), "SERVIDOR\\Administrador", "Eneresi5102", "GELITE", 3);
     // $murcia = array( "81.45.47.60", "SERVIDOR\\ebadia", "ClinicaMurcia14", "GELITE", 3);
     // $molina = array( "81.45.47.60", "SERVIDOR\\ebadia", "ClinicaMurcia14", "GELITE", 4);
-    $mislata = array();
     // $barcelona =  array( gethostbyname('eneresibcn.no-ip.net'), "SERVIDOR\\ebadia", "Eneresi6102", "GELITE", 6);
     $barcelona =  array( "80.24.9.68", "SERVIDOR\\ebadia", "Eneresi6102", "GELITE", 6);
     // $bilbao =  array( gethostbyname('eneresibilbao.no-ip.net'), "GABINETE\\ebadia", "Eneresi6102", "GELITE", 7);
