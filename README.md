@@ -1,2 +1,3 @@
 # rocks
-Repositorio para el desarrollo de Enréresi Rocks
+
+Repositorio para el desarrollo de Enéresi Rocks
