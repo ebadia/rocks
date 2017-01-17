@@ -1,0 +1,77 @@
+<div class="page page-dashboard">
+
+<!-- tabla -->
+
+	<div class="panel panel-default">
+
+		<!-- lista de contactos de seguimiento -->
+
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Control de cumpleaños	</span></strong>
+			<span style="float: right;">
+				<!--a type="button" class="btn btn-danger btn-sm" href="#!/compras/vercarro">
+					<span class="glyphicon glyphicon-shopping-cart">&nbsp;{{carro}}</span>
+				</a-->
+			</span>
+		</div>
+
+		<div class="panel-body">
+
+			<div ng-hide="smsv.citas"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+
+			<div ng-show="smsv.citas" class="input-group ui-datepicker">
+				<input type="text" 
+					class="form-control"
+					datepicker-popup="yyyy-MM-dd"
+					is-open="opened"
+					max="'2035-12-31'"
+					datepicker-options="dateOptions"
+					ng-model="smsv.fecha"
+					datepicker-append-to-body = "true"
+					current-text="Hoy"
+					clear-text="Borrar"
+					close-text="Cerrar"
+					min="minDate"
+					ng-change="smsv.dia()"
+					disabled="true" 
+				>
+				<span class="input-group-btn">
+					<button type="button" class="btn btn-default" ng-click="smsv.openCalendar($event)"><i class="glyphicon glyphicon-calendar"></i> Abre el Calendario</button>
+				</span>
+			</div>
+
+
+			<table ng-show="smsv.citas" class="table" table-condensed>
+				<thead>
+					<tr>
+						<th>nombre</th>
+						<th>apellidos</th>
+						<th>movil</th>
+						<th>cumple</th>
+						<th>horacita</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="i in smsv.citas" ng-class="{'bg-warning': i.concitahoy >= 1 }">
+						<td>{{i.Nombre}}</td>
+						<td>{{i.Apellidos}}</td>
+						<td><a ng-href="#!/sms/uno/{{i.TelMovil}}/{{i.Nombre}}">{{i.TelMovil}}</a></td>
+						<td>{{i.cumple}}</td>
+						<td>{{i.horacita}}</td>
+
+						<td width="60px" ng-class="{'bg-success': i.sms >= 1 }">
+							<span >&nbsp;</span>
+							<!--button type="button" class="btn btn-success btn-sm" ng-click="alCarro(ppto)">
+								<span class="glyphicon glyphicon-shopping-cart"></span>
+							</button-->
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+	</div>
+
+</div>

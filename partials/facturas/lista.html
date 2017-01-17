@@ -1,0 +1,76 @@
+<div class="page page-dashboard">
+
+	<a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a>
+
+<!-- tabla -->
+
+	<div class="panel panel-default">
+
+		<!-- lista de contactos de seguimiento -->
+
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span></strong>
+			Facturado por Argos	
+			<span style="float: right;">
+			    <button type="button" class="btn btn-danger btn-xs" ng-click="smsv.exportar()" ng-show="smsv.resumen">
+			        exportar
+			    </button>
+			</span>
+		</div>
+
+		<div class="panel-body">
+
+			<div ng-hide="ttos"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+
+			<table class="table" table-condensed ng-show="ttos">
+				<thead>
+					<tr>
+						<th>Año</th>
+						<th>Mes</th>
+						<th>Cliente</th>
+						<th>Tipo</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="ppto in smsv.resumen">
+						<td>{{ppto.anyo}}</td>
+						<td>{{ppto.mes}}</td>
+						<td>{{ppto.cliente}}</td>
+						<td>{{ppto.tipo}}</td>
+						<td>{{ppto.total | number:2}}</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table class="table" table-condensed ng-show="ttos">
+				<thead>
+					<tr>
+						<th>Año</th>
+						<th>Mes</th>
+						<th>Cliente</th>
+						<th>Tipo</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="ppto in smsv.facturas">
+						<td>{{ppto.value.anyo}}/{{ppto.value.mes}}</td>
+						<td>{{ppto.value.date}}</td>
+						<td>{{ppto.value.cliente}}</td>
+						<td>{{ppto.value.tipo}}</td>
+						<td>{{ppto.value.total | number:2}}</td>
+					</tr>
+				</tbody>
+			</table>
+
+
+		</div>
+
+
+	</div>
+
+<!-- tabla -->
+</div>

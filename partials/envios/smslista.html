@@ -1,0 +1,102 @@
+<div class="page page-dashboard">
+
+<!-- tabla -->
+
+	<div class="panel panel-default">
+
+		<!-- lista de contactos de seguimiento -->
+
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span> Mensajes del mes de la fecha</span></strong>
+			<span style="float: right;">
+				<!--a type="button" class="btn btn-danger btn-sm" href="#!/compras/vercarro">
+					<span class="glyphicon glyphicon-shopping-cart">&nbsp;{{carro}}</span>
+				</a-->
+			</span>
+		</div>
+
+		<div class="panel-body">
+
+			<div ng-hide="smsv.citas"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+
+			<div ng-show="smsv.citas" class="input-group ui-datepicker">
+				<input type="text" 
+					class="form-control"
+					datepicker-popup="yyyy-MM-dd"
+					is-open="opened"
+					max="'2035-12-31'"
+					datepicker-options="dateOptions"
+					ng-model="smsv.fecha"
+					datepicker-append-to-body = "true"
+					current-text="Hoy"
+					clear-text="Borrar"
+					close-text="Cerrar"
+					min="minDate"
+					ng-change="smsv.dia()"
+					disabled="true" 
+				>
+				<span class="input-group-btn">
+					<button type="button" class="btn btn-default" ng-click="smsv.openCalendar($event)"><i class="glyphicon glyphicon-calendar"></i> Abre el Calendario</button>
+				</span>
+			</div>
+
+			<div ng-show="smsv.citas">
+				<div class="col-sm-6">
+					<div class="panel mini-box">
+	                        <span class="box-icon bg-info">
+	                            <i class="fa fa-check"></i>
+	                        </span>
+	                        <div class="box-info">
+	                            <p class="size-h2">{{smsv.msgs}}</p>
+	                            <p class="text-muted">Mensajes enviados</p>
+	                        </div>
+	                    </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="panel mini-box">
+	                        <span class="box-icon bg-info">
+	                            <i class="fa fa-euro"></i>
+	                        </span>
+	                        <div class="box-info">
+	                            <p class="size-h2">{{smsv.msgs*smsv.coste | number : 2}}</p>
+	                            <p class="text-muted">Presupuesto</p>
+	                        </div>
+	                    </div>
+				</div>
+			</div>
+
+
+			<table ng-show="smsv.citas" class="table" table-condensed>
+				<thead>
+					<tr>
+						<th>fecha</th>
+						<th>para</th>
+						<th>message</th>
+						<th>motivo</th>
+						<th>envio</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="i in smsv.citas | filter:{motivo:smsv.filtro}">
+						<td>{{i.fecha}}</td>
+						<td>{{i.para}}</td>
+						<td>{{i.message}}</td>
+						<td>{{i.motivo}}</td>
+						<td>{{i.nom}}</td>
+
+						<td width="30px"  ng-class="{'bg-success': i.sms >= 1 }">
+							<span >&nbsp;</span>
+							<!--button type="button" class="btn btn-success btn-sm" ng-click="alCarro(ppto)">
+								<span class="glyphicon glyphicon-shopping-cart"></span>
+							</button-->
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+	</div>
+
+</div>

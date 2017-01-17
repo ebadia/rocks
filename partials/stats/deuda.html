@@ -1,0 +1,83 @@
+<div class="page page-dashboard">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Deuda</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!data">Wait...</progressbar>
+                    <barchart id="facturacion" val="data" data-options="chart_options" class="grafic"></barchart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Deuda Ultimos 4 años</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> Año </th>
+                        <th> Con Cero </th>
+                        <th> Con Positivo </th>
+                        <th> S.Positivo </th>
+                        <th> Con Negativo </th>
+                        <th> S.Negativo </th>
+                        <th> Saldo </th>
+                    </tr>
+                    <tr ng-repeat="dato in data">
+                        <td> Desde {{dato.any}} </td>
+                        <td> {{dato.cero}} </td>
+                        <td> {{dato.cpositivo}} </td>
+                        <td> {{dato.spositivo}} </td>
+                        <td> {{dato.cnegativo}} </td>
+                        <td> {{dato.snegativo}} </td>
+                        <td> {{dato.spositivo + dato.snegativo}} </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Deuda Anterior a los ultimos 4 años</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> Año </th>
+                        <th> Con Cero </th>
+                        <th> Con Positivo </th>
+                        <th> S.Positivo </th>
+                        <th> Con Negativo </th>
+                        <th> S.Negativo </th>
+                        <th> Saldo </th>
+                    </tr>
+                    <tr ng-repeat="dato in dataAnterior">
+                        <td> Hasta {{dato.any}} </td>
+                        <td> {{dato.cero}} </td>
+                        <td> {{dato.cpositivo}} </td>
+                        <td> {{dato.spositivo}} </td>
+                        <td> {{dato.cnegativo}} </td>
+                        <td> {{dato.snegativo}} </td>
+                        <td> {{dato.spositivo + dato.snegativo}} </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+

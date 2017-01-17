@@ -1,0 +1,119 @@
+<div class="page page-dashboard">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Total Tratamientos</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!data">Wait...</progressbar>
+                    <barchart id="ttos" val="data" data-options="chart_options" class="grafic"></barchart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Total Tratamientos Datos</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> Mes </th>
+                        <th ng-repeat="any in anys"> {{any}} </th>
+                    </tr>
+                    <tr ng-repeat="dato in data">
+                        <td> {{$index + 1}} </td>
+                        <td ng-repeat="any in anys"> {{dato[any]}} </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+
+<div class="page page-dashboard">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Total Tiempo Intervenciones (minutos)</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!data">Wait...</progressbar>
+                    <barchart id="tiempos" val="datatiempos" data-options="chart_options" class="grafic"></barchart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Total Tiempo Intervenciones Datos (minutos)</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> Mes </th>
+                        <th ng-repeat="any in anys"> {{any}} </th>
+                    </tr>
+                    <tr ng-repeat="dato in datatiempos">
+                        <td> {{$index + 1}} </td>
+                        <td ng-repeat="any in anys"> {{dato[any]}} </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+
+<div class="page page-dashboard">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Medias Tiempos Intervenciones</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!data">Wait...</progressbar>
+                    <barchart id="medias" val="datamedias" data-options="chart_options" class="grafic"></barchart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Medias Tiempos Intervenciones Datos</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> Mes </th>
+                        <th ng-repeat="any in anys"> {{any}} </th>
+                    </tr>
+                    <tr ng-repeat="dato in datamedias">
+                        <td> {{$index + 1}} </td>
+                        <td ng-repeat="any in anys"> {{dato[any]}} </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>

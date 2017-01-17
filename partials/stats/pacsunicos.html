@@ -1,0 +1,100 @@
+<div class="page page-dashboard">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Pacientes Unicos Visitados</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!data">Wait...</progressbar>
+                    <barchart id="pacsunicos" val="data" data-options="chart_options" class="grafic"></barchart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Pacientes Unicos Visitados Datos</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> Mes </th>
+                        <th ng-repeat="any in anys"> {{any}} </th>
+                    </tr>
+                    <tr ng-repeat="dato in data">
+                        <td> {{$index + 1}} </td>
+                        <td ng-repeat="any in anys"> {{dato[any]}} </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+
+<div class="page page-dashboard">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Pacientes Unicos Visitados / Acumulado</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!data">Wait...</progressbar>
+                    <barchart id="operacion_acum" val="data_acum" data-options="chart_options" class="grafic"></barchart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Pacientes Unicos Visitados Datos Acumulado</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> Mes </th>
+                        <th ng-repeat="any in anys"> {{any}} </th>
+                    </tr>
+                    <tr ng-repeat="dato in data_acum">
+                        <td> Anual </td>
+                        <td ng-repeat="any in anys"> {{dato[any]}} </td>
+                    </tr>
+                    <tr>
+                        <td> Acum. </td>
+                        <td ng-repeat="dato in data_acum_anuales"> {{dato.unicos}} </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+
+<div class="page page-dashboard">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Ticket Medio por Paciente y Año</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!data">Wait...</progressbar>
+                    <barchart id="ticketany" val="data_ticketany" data-options="chart_options_any" class="grafic"></barchart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+
+</div>

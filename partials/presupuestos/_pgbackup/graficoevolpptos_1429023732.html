@@ -1,0 +1,161 @@
+<div class="page page-dashboard">
+    <!--a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+        <span class="glyphicon glyphicon-arrow-left"></span>
+    </a-->
+    <div class="divider"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-th"></span>Canta
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3" data-pg-collapsed id="presupuestos">
+                            <h3>Presupuestos</h3>
+                            <p>Presupuestos que constan en Gesdent con codigo de Presupuesto (7) / Propuesto (8) entrados entre las fechas del rango.</p>
+                            <hr/>
+                            <form ng-submit="fppto(ppto)">
+                                <fieldset class="pg-empty-placeholder">
+                                    <button type="submit" class="btn btn-warning btn-xs btn-block" tooltip="Pptos" name="Presupuestos">
+                                        <span>Presupuestos</span>
+                                    </button>
+                                </fieldset>
+                                <hr/>
+                                <fieldset>
+                                    <label title="desde">
+                                        desde:&nbsp;
+</label>
+                                    <input placeholder="desde" ng-model="ppto.ddia" size="2">
+                                    <input placeholder="desde" ng-model="ppto.dmes" size="2">
+                                    <input placeholder="desde" ng-model="ppto.dany" size="4">
+                                </fieldset>
+                                <fieldset>
+                                    <label title="desde">
+                                        hasta: &nbsp;
+</label>
+                                    <input placeholder="hasta" ng-model="ppto.hdia" size="2">
+                                    <input placeholder="hasta" ng-model="ppto.hmes" size="2">
+                                    <input placeholder="hasta" ng-model="ppto.hany" size="4">
+                                </fieldset>
+                            </form>
+                            <hr/>
+                            <div class="" data-pg-collapsed>
+                                <p>Num.</p>
+                                <h1>{{ppto.num}}</h1>
+                                <p>Valor</p>
+                                <h1>{{ppto.pago}}</h1>
+                            </div>
+                        </div>
+                        <div class="col-md-3" data-pg-collapsed id="aceptados">
+                            <h3>Aceptados</h3>
+                            <p>Operaciones que constan en Gesdent con codigo de Aceptadas (3) / Realizadas (5) entre las fechas del rango.</p>
+                            <hr>
+                            <form ng-submit="frealiza(real)">
+                                <fieldset class="pg-empty-placeholder">
+                                    <button type="submit" class="btn btn-warning btn-xs btn-block" tooltip="Acepta" name="Presupuestos">
+                                        <span>Aceptados</span>
+                                    </button>
+                                </fieldset>
+                                <hr>
+                                <fieldset>
+                                    <label title="desde">
+                                        desde:&nbsp;
+</label>
+                                    <input placeholder="desde" ng-model="acep.ddia" size="2">
+                                    <input placeholder="desde" ng-model="acep.dmes" size="2">
+                                    <input placeholder="desde" ng-model="acep.dany" size="4">
+                                </fieldset>
+                                <fieldset>
+                                    <label title="desde">
+                                        hasta: &nbsp;
+</label>
+                                    <input placeholder="hasta" ng-model="acep.hdia" size="2">
+                                    <input placeholder="hasta" ng-model="acep.hmes" size="2">
+                                    <input placeholder="hasta" ng-model="acep.hany" size="4">
+                                </fieldset>
+                            </form>
+                            <hr>
+                            <div data-pg-collapsed="">
+                                <p>Num.</p>
+                                <h1>{{acepta.num}}</h1>
+                                <p>Valor</p>
+                                <h1>{{acepta.pago}}</h1>
+                            </div>
+                        </div>
+                        <div class="col-md-3" id="realizados">
+                            <h3>Realizados</h3>
+                            <p>Operaciones que constan en Gesdent con codigo de Realizadas (5) entre las fechas del rango.</p>
+                            <hr>
+                            <form ng-submit="frealizado(real)">
+                                <fieldset class="pg-empty-placeholder">
+                                    <button type="button" class="btn btn-warning btn-xs btn-block" ng-click="ppto()" tooltip="Sigue" name="Presupuestos">Realizado&nbsp;</button>
+                                </fieldset>
+                                <hr>
+                                <fieldset>
+                                    <label title="desde" class="control-label">
+                                        desde:&nbsp;
+</label>
+                                    <input placeholder="desde" size="2" ng-model="real.ddia">
+                                    <input placeholder="desde" size="2" ng-model="real.dmes">
+                                    <input placeholder="desde" size="4" ng-model="real.dany">
+                                </fieldset>
+                                <fieldset>
+                                    <label title="desde" class="control-label">
+                                        hasta: &nbsp;
+</label>
+                                    <input placeholder="hasta" size="2" ng-model="real.hdia">
+                                    <input placeholder="hasta" size="2" ng-model="real.hmes">
+                                    <input placeholder="hasta" size="4" ng-model="real.hany">
+                                </fieldset>
+                            </form>
+                            <hr>
+                            <div data-pg-collapsed="">
+                                <p>Num.</p>
+                                <h1>{{realiza.num}}</h1>
+                                <p>Valor</p>
+                                <h1>{{realiza.pago}}</h1>
+                            </div>
+                        </div>
+                        <div class="col-md-3" id="seguimiento" data-pg-collapsed>
+                            <h3>Seguimiento</h3>
+                            <p>Operaciones que constan en Gesdent con codigo de Aceptadas (3) entre las fechas del rango.</p>
+                            <hr>
+                            <form ng-submit="fsigue(sigue)">
+                                <fieldset class="pg-empty-placeholder">
+                                    <button type="submit" class="btn btn-warning btn-xs btn-block" tooltip="Sigue" name="Presupuestos">
+                                        <span>Seguimiento</span>
+                                    </button>
+                                </fieldset>
+                                <hr>
+                                <fieldset>
+                                    <label title="desde" class="control-label">
+                                        desde:&nbsp;
+</label>
+                                    <input placeholder="desde" size="2" ng-model="sigue.ddia">
+                                    <input placeholder="desde" size="2" ng-model="sigue.dmes">
+                                    <input placeholder="desde" size="4" ng-model="sigue.dany">
+                                </fieldset>
+                                <fieldset>
+                                    <label title="desde" class="control-label">
+                                        hasta: &nbsp;
+</label>
+                                    <input placeholder="hasta" size="2" ng-model="sigue.hdia">
+                                    <input placeholder="hasta" size="2" ng-model="sigue.hmes">
+                                    <input placeholder="hasta" size="4" ng-model="sigue.hany">
+                                </fieldset>
+                            </form>
+                            <hr>
+                            <div data-pg-collapsed="">
+                                <p>Num.</p>
+                                <h1>{{sigue.num}}</h1>
+                                <p>Valor</p>
+                                <h1>{{sigue.pago}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>             
+        </div>         
+    </div>
+</div>

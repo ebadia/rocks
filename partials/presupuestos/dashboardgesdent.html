@@ -1,0 +1,109 @@
+<div class="page page-dashboard">
+
+<!-- tabla -->
+
+	<div class="panel panel-default">
+
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span data-i18n="Presupuestos Gesden (Ultimos 6 meses)"></span></strong>
+		</div>
+		<div class="panel-body">
+
+		<div>
+			<span style="float: right;">
+				<a class="btn btn-success btn-sm" href="#!/resumenpptos"><span class="glyphicon glyphicon-tasks"></span></a>
+				<!--a class="btn btn-success btn-sm" href="#!/graficoevolpptos"><span class="glyphicon glyphicon-signal"></span></a-->
+			</span>
+		</div>
+
+		<div ng-hide="pptos"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+
+		<div class="roww" ng-show="pptos">
+			<div class="col-xs-12">
+				<div class="form-inline">
+	    			<input type="text" class="form-control" placeholder="Buscar por apellidos" ng-model="busca.Apellidos">
+	    			<small>Minimo:</small>
+	    			<input type="text" class="form-control" ng-model="minimo">
+
+	    			<!-- botones de cantidades predefinidas-->
+    				<button class="btn btn-success" ng-click="a()">A</button>
+    				<button class="btn btn-warning" ng-click="b()">B</button>
+    				<button class="btn btn-danger" ng-click="c()">C</span></button>
+	    			<!-- botones de cantidades predefinidas-->
+
+    				<button class="btn" ng-click="resetFiltros()"><span class="glyphicon glyphicon-search"></span></button>
+	    		</div>
+    		</div>
+    		<div class="col-xs-12" style="margin-top: 20px;">
+    			<button class="btn btn-xs btn-success" ng-click="detallamelos()"><span class="glyphicon glyphicon-th-list"></span></button> Detalles
+
+    			<span class="ui-select">
+    			    <select ng-change="filtra()" ng-model="estado">
+    			        <option value="s">Seguimiento</option>
+    			        <option value="a">Aceptado</option>
+    			        <option value="r">Rechazado</option>
+    			        <option value="o">Opcional</option>
+    			    </select>
+    			</span>
+    		</div>
+
+		</div>
+
+		<br/>
+
+		<div class="row" ng-show="pptos"> <br/> <br/> <br/> </div>
+
+		<div class="row" ng-show="pptos"> <br/> </div>
+			<table class="table table-condensed">
+				<tbody>
+					<tr ng-repeat="ppto in pptos | filter:busca | gthan:minimo | status:estado"  class="{{ppto.estat}}" ng-show="{{muestrame}}">
+						<!--td>{{ppto.entrega | date:'yyyy-MM-dd'}}</td-->
+
+						<td bgcolor="{{ppto.color}}" style="width: 4px;"></td>
+						<td>
+							<!-- Botones -->
+							<a type="button" class="btn btn-warning btn-xs" href="#!/addRecall/{{ppto.NumPac}}/{{ppto.Nombre}} {{ppto.Apellidos}}">
+								<span class="glyphicon glyphicon-bullhorn"></span>
+							</a>
+							<a href="#!/listaRecalls/{{ppto.NumPac}}/{{ppto.Nombre}} {{ppto.Apellidos}}">
+								<span class="badge badge-danger" ng-show="ppto.tieneRecall">&nbsp;&nbsp;</span>
+							</a>
+						</td>
+						
+						<td>
+							<!-- Paciente -->
+							<div>
+								<a type="button" class="btn btn-info btn-xs" href="#!/pptosgesdent/{{ppto.NumPac}}/{{ppto.NumPre}}">
+									<span class="glyphicon glyphicon-play"></span>
+								</a>
+								{{ppto.Nombre}} {{ppto.Apellidos}}<br/>
+								<small><i class="glyphicon glyphicon-hand-left"></i>&nbsp;{{ppto.Entrega}}</small><br/>
+								<small ng-show="ppto.FecAcepta"><i class="glyphicon glyphicon-ok"></i>&nbsp;{{ppto.FecAcepta}}</small>
+								<small ng-show="ppto.FecRechaz"><i class="glyphicon glyphicon-thumbs-down"></i>&nbsp;{{ppto.FecRechaz}}</small>
+							</div>
+							<div ng-hide="detallame">
+								<span class="text-primary">{{ppto.Notas}}</span>
+							</div>
+						</td>
+						<td ng-class="{'bg-warning': ppto.Importe >= 2500, 'bg-danger': ppto.Importe > 6000 }" style="width: 4px;"></td>
+						<td>
+							<div>{{ppto.Importe | currency:'€'}}</div>
+							<div ng-show="ppto.importeAprobado>0">{{ppto.importeAprobado | currency:'€'}}</div>
+						</td>
+
+						<td>
+							<div ng-hide="{{ppto.motiu_id}}"><span class="label label-info">{{ppto.Titulo}}</span></div>
+						</td>
+
+						<td>
+							<!--button type="button" class="btn btn-success btn-xs" data-ng-click="aceptaGesdent(centre, ppto.NumPac,ppto.NumPre)" tooltip="Aceptar">
+								<span class="glyphicon glyphicon-ok-circle"></span>
+							</button-->
+						</td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

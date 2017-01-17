@@ -1,0 +1,106 @@
+<!-- datos de este paciente -->
+<!--  -->
+
+<div class="page page-dashboard">
+	<a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span data-i18n="Presupuestos"></span></strong>
+			<div>Id: {{pac.NumPac}}</div>
+			<div>{{pac.Nombre}} {{pac.Apellidos}}</div>
+			<div>Tels: {{pac.Tel1}} / {{pac.Tel2}}</div>
+			<div>Movil: {{pac.TelMovil}}</div>
+		</div>
+		<div class="panel panel-profile">
+            <div class="panel-heading text-center bg-info">
+	    		<h3>Importe global: {{sumapptos}} €</h3>
+				<button type="button" class="btn btn-warning btn-xs" data-ng-click="imprimeglobal()" tooltip="Imprime" ng-show="sumapptos > 0">
+					<span class="glyphicon glyphicon-print"></span>
+				</button>
+			</div>
+        </div>
+		<div class="panel-body">
+
+			<!-- formulario de introduccion de presupuestos de este paciente -->
+			<!--  -->
+					<span>Añade nuevo presupuesto</span>
+					<form ng-submit="add(ppto)" novalidate class="form-horizontal">
+		                <table class="table table-condensed">
+		                    <tr>
+		                        <th> Importe </th>
+		                        <th> Motivo </th>
+		                        <th>   </th>
+		                    </tr>
+		                    <tr>
+		                        <td>
+									<div class="form-group">
+										<div class="col-sm-10">
+									    	<input type="text" class="form-control" ng-model="ppto.import" autofocus>
+										</div>
+									</div>
+								</td>
+		                        <td>
+									<div class="form-group">
+										<div class="col-sm-10">
+										    <select class="form-control" ng-model="ppto.motiu_id" ng-options="tto.nom for tto in ttos"></select>
+										</div>
+									</div>
+								</td>
+		                        <td> <button type="submit" class="btn btn-success btn-block" ng-disabled="loginForm.$invalid">Añadir</button> </td>
+		                    </tr>
+		                </table>
+	                </form>
+	    </div>
+
+	</div>
+
+</div>
+
+<!-- presupuestos de este paciente -->
+<!--  -->
+
+<div class="page page-dashboard taula">
+    <div class="panel panel-default">
+	    <div class="panel-heading"><div>Presupuestos Previstos</div></div>
+	    <div class="panel-body">
+            <table class="table table-condensed">
+                <tr>
+                    <th>  </th>
+                    <th> Motivo  </th>
+                    <th> Importe </th>
+                    <th> Estado </th>
+                    <th>  </th>
+                </tr>
+                <tr ng-repeat="ppto in pptos">
+                    <td> {{ppto.id}} </td>
+                    <td width="60%"> <strong>{{ppto.tto}} </strong>
+						<br/>{{ppto.colectivo}}, {{ppto.quecolectivo}}
+                    </td>
+                    <td> {{ppto.import}} </td>
+                    <td><span class="label label-default">{{ppto.estat}}</span></td>
+                    <td> 
+                    	<div data-ng-controller="ModalDemoCtrl">
+ 							<button type="button" class="btn btn-warning btn-xs" data-ng-click="imprime(ppto)" tooltip="Imprime">
+								<span class="glyphicon glyphicon-print"></span>
+							</button>
+ 							<a type="button" class="btn btn-warning btn-xs" href="#!/infoorto/{{pac.Nombre}}" tooltip="Info Ortodoncia">
+								<span class="glyphicon glyphicon-print"> Orto</span>
+							</a>
+ 							<a type="button" class="btn btn-info btn-xs" href="#!/editappto/{{ppto.id}}" tooltip="Editar">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</a>
+ 							<button type="button" class="btn btn-danger btn-xs" ng-click="borrappto(ppto)" tooltip="Borrar">
+								<span class="glyphicon glyphicon-trash"></span>
+							</button>
+						</div>
+					</td>
+                </tr>
+            </table>
+        </div>
+    </div>            
+</div>
+
+

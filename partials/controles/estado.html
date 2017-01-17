@@ -1,0 +1,55 @@
+<div class="page page-dashboard">
+
+<!-- 	<a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a>
+ -->
+<!-- tabla -->
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Estados de Controles</span></strong>
+
+		</div>
+		<div class="panel-body">
+			<div ng-hide="recalls"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+			<table class="table" table-condensed ng-show="recalls">
+				<thead>
+					<tr>
+						<th>Año</th>
+						<th>Mes</th>
+						<th>Total</th>
+						<th>Llamadas</th>
+						<th>1 Llamada</th>
+						<th>2 Llamadas</th>
+						<th>3 Llamadas</th>
+						<th>Cartas</th>
+						<th>Citados</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat="ppto in recalls">
+						<td>{{ppto.ano}}</td>
+						<td>{{ppto.mes}}</td>
+						<td>{{ppto.total}}</td>
+						<td>{{ppto.llamadas}} <br/> <h6><small>({{ (ppto.llamadas / ppto.total) | percent:1}})</small></h6>
+							<progressbar animate="true" value="ppto.rllamadas" type="info"><b>{{ (ppto.llamadas / ppto.total) | percent:1}}</b></progressbar>
+						</td>
+						<td>{{ppto.llamadas1}}</td>
+						<td>{{ppto.llamadas2}}</td>
+						<td>{{ppto.llamadas3}}</td>
+						<td>{{ppto.cartas}} <br/> <h6><small>({{ (ppto.cartas / ppto.total) | percent:1}})</small></h6></td>
+						<td>{{ppto.citados}} <a href="#!/controles/lista/citado/{{ppto.ano}}/{{ppto.mes}}"><i class="glyphicon glyphicon-arrow-right
+"></i></a>
+							<br/> 
+							<h6><small>({{ (ppto.citados / ppto.total) | percent:1}})</small></h6>
+						<progressbar animate="true" value="ppto.rcitados" type="warning"><b>{{ (ppto.citados / ppto.total) | percent:1}}</b></progressbar>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+<!-- tabla -->
+</div>

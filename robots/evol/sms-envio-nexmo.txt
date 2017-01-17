@@ -1,0 +1,213 @@
+object(Nexmo\Message\Message)#21 (8) {
+  ["responseParams":protected]=>
+  array(6) {
+    [0]=>
+    string(6) "status"
+    [1]=>
+    string(10) "message-id"
+    [2]=>
+    string(2) "to"
+    [3]=>
+    string(17) "remaining-balance"
+    [4]=>
+    string(13) "message-price"
+    [5]=>
+    string(7) "network"
+  }
+  ["current":protected]=>
+  int(0)
+  ["id":protected]=>
+  NULL
+  ["request":protected]=>
+  object(Zend\Diactoros\Request)#19 (7) {
+    ["headers":protected]=>
+    array(2) {
+      ["content-type"]=>
+      array(1) {
+        [0]=>
+        string(16) "application/json"
+      }
+      ["Host"]=>
+      array(1) {
+        [0]=>
+        string(14) "rest.nexmo.com"
+      }
+    }
+    ["headerNames":protected]=>
+    array(2) {
+      ["content-type"]=>
+      string(12) "content-type"
+      ["host"]=>
+      string(4) "Host"
+    }
+    ["protocol":"Zend\Diactoros\Request":private]=>
+    string(3) "1.1"
+    ["stream":"Zend\Diactoros\Request":private]=>
+    object(Zend\Diactoros\Stream)#29 (2) {
+      ["resource":protected]=>
+      resource(1409) of type (stream)
+      ["stream":protected]=>
+      string(10) "php://temp"
+    }
+    ["method":"Zend\Diactoros\Request":private]=>
+    string(4) "POST"
+    ["requestTarget":"Zend\Diactoros\Request":private]=>
+    NULL
+    ["uri":"Zend\Diactoros\Request":private]=>
+    object(Zend\Diactoros\Uri)#44 (9) {
+      ["allowedSchemes":protected]=>
+      array(2) {
+        ["http"]=>
+        int(80)
+        ["https"]=>
+        int(443)
+      }
+      ["scheme":"Zend\Diactoros\Uri":private]=>
+      string(5) "https"
+      ["userInfo":"Zend\Diactoros\Uri":private]=>
+      string(0) ""
+      ["host":"Zend\Diactoros\Uri":private]=>
+      string(14) "rest.nexmo.com"
+      ["port":"Zend\Diactoros\Uri":private]=>
+      NULL
+      ["path":"Zend\Diactoros\Uri":private]=>
+      string(9) "/sms/json"
+      ["query":"Zend\Diactoros\Uri":private]=>
+      string(0) ""
+      ["fragment":"Zend\Diactoros\Uri":private]=>
+      string(0) ""
+      ["uriString":"Zend\Diactoros\Uri":private]=>
+      NULL
+    }
+  }
+  ["response":protected]=>
+  object(GuzzleHttp\Psr7\Response)#26 (6) {
+    ["reasonPhrase":"GuzzleHttp\Psr7\Response":private]=>
+    string(2) "OK"
+    ["statusCode":"GuzzleHttp\Psr7\Response":private]=>
+    int(200)
+    ["headers":"GuzzleHttp\Psr7\Response":private]=>
+    array(9) {
+      ["Cache-Control"]=>
+      array(1) {
+        [0]=>
+        string(9) "max-age=1"
+      }
+      ["Content-Disposition"]=>
+      array(1) {
+        [0]=>
+        string(30) "attachment; filename="api.txt""
+      }
+      ["Content-Type"]=>
+      array(1) {
+        [0]=>
+        string(16) "application/json"
+      }
+      ["Date"]=>
+      array(1) {
+        [0]=>
+        string(29) "Sun, 18 Dec 2016 13:45:02 GMT"
+      }
+      ["Server"]=>
+      array(1) {
+        [0]=>
+        string(5) "nginx"
+      }
+      ["Strict-Transport-Security"]=>
+      array(1) {
+        [0]=>
+        string(35) "max-age=31536000; includeSubdomains"
+      }
+      ["X-Frame-Options"]=>
+      array(1) {
+        [0]=>
+        string(4) "deny"
+      }
+      ["X-XSS-Protection"]=>
+      array(1) {
+        [0]=>
+        string(14) "1; mode=block;"
+      }
+      ["Content-Length"]=>
+      array(1) {
+        [0]=>
+        string(3) "259"
+      }
+    }
+    ["headerNames":"GuzzleHttp\Psr7\Response":private]=>
+    array(9) {
+      ["cache-control"]=>
+      string(13) "Cache-Control"
+      ["content-disposition"]=>
+      string(19) "Content-Disposition"
+      ["content-type"]=>
+      string(12) "Content-Type"
+      ["date"]=>
+      string(4) "Date"
+      ["server"]=>
+      string(6) "Server"
+      ["strict-transport-security"]=>
+      string(25) "Strict-Transport-Security"
+      ["x-frame-options"]=>
+      string(15) "X-Frame-Options"
+      ["x-xss-protection"]=>
+      string(16) "X-XSS-Protection"
+      ["content-length"]=>
+      string(14) "Content-Length"
+    }
+    ["protocol":"GuzzleHttp\Psr7\Response":private]=>
+    string(3) "1.1"
+    ["stream":"GuzzleHttp\Psr7\Response":private]=>
+    object(GuzzleHttp\Psr7\Stream)#31 (7) {
+      ["stream":"GuzzleHttp\Psr7\Stream":private]=>
+      resource(1411) of type (stream)
+      ["size":"GuzzleHttp\Psr7\Stream":private]=>
+      NULL
+      ["seekable":"GuzzleHttp\Psr7\Stream":private]=>
+      bool(true)
+      ["readable":"GuzzleHttp\Psr7\Stream":private]=>
+      bool(true)
+      ["writable":"GuzzleHttp\Psr7\Stream":private]=>
+      bool(true)
+      ["uri":"GuzzleHttp\Psr7\Stream":private]=>
+      string(10) "php://temp"
+      ["customMetadata":"GuzzleHttp\Psr7\Stream":private]=>
+      array(0) {
+      }
+    }
+  }
+  ["responseJson":protected]=>
+  array(2) {
+    ["message-count"]=>
+    string(1) "1"
+    ["messages"]=>
+    array(1) {
+      [0]=>
+      array(6) {
+        ["to"]=>
+        string(11) "34601007366"
+        ["message-id"]=>
+        string(16) "0D0000001A590FC6"
+        ["status"]=>
+        string(1) "0"
+        ["remaining-balance"]=>
+        string(11) "30.06000000"
+        ["message-price"]=>
+        string(10) "0.06500000"
+        ["network"]=>
+        string(5) "21418"
+      }
+    }
+  }
+  ["requestData":protected]=>
+  array(3) {
+    ["to"]=>
+    string(11) "34601007366"
+    ["from"]=>
+    string(7) "SdeAlma"
+    ["text"]=>
+    string(114) "S DE ALMA 30%OFF\nPer haber-nos acompanyat en aquest 2016, podeu gaudir d'un 30% de dte. del 19 al 31 de desembre."
+  }
+  ["index":protected]=>
+  NULL
+}

@@ -1,0 +1,38 @@
+<div class="page page-dashboard">
+	<a href="#!/controles/listado" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a>
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+			    <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Controles de Recall</div>
+
+	                <table class="table table-condensed">
+	                    <tr>
+	                        <th> Id </th>
+	                        <th> Paciente  </th>
+	                        <th> Tipo  </th>
+	                        <th> Cita  </th>
+							<th> Carta </th>
+	                    </tr>
+	                    <tr ng-repeat="recall in recalls">
+	                        <td> {{recall.IdPac}} </td>
+	                        <td> {{recall.Nombre}} {{recall.Apellidos}}</td>
+	                        <td> {{recall.Descripcio}} </td>
+	                        <td> {{recall.Cita*1000 | date:"yyyy-MM-dd"}} </td>
+							<td> 
+								<label class="switch switch-success" ng-show="!recall.Citado">
+									<input type="checkbox" 
+										ng-model="recall.Carta" class="ng-pristine ng-valid" name="{{recall.IdPac}}"
+										ng-true-value="1" ng-false-value="0" ng-checked="recall.Carta"
+										ng-change="carta(recall.NumRec,recall.Carta)">
+									<i></i>
+								</label>
+							</td>
+	                    </tr>
+	                </table>
+                </div>
+            </section>            
+        </div>        
+    </div>
+</div>

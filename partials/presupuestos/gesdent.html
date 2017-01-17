@@ -1,0 +1,149 @@
+<div class="page page-dashboard">
+    <!--a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+        <span class="glyphicon glyphicon-arrow-left"></span>
+    </a-->
+
+<!-- tabla -->
+
+	<div class="panel panel-default" ng-show="base">
+
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span data-i18n="Presupuesto Rocks"></span></strong>
+		</div>
+
+		<div class="panel-body">
+
+			<div ng-hide="pptos"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+
+			<div>
+
+			<table class="table table-condensed">
+				<tr class="{{base.estat}}">
+					<td>
+						<!-- Paciente -->
+						<div>
+							<strong>{{base.pacient}}</strong><br/>
+							<small>{{base.entrega}}</small>
+						</div>
+					</td>
+					<td> <div>{{base.import | currency:'€'}}</div> </td>
+
+					<td>
+						<div><span class="label label-info">{{base.motiu}}</span></div>
+						<div><span class="label label-info">{{base.tto}}</span></div>
+					</td>
+
+					<td> <div class="label label-default" id="{{ppto.estat | limitTo : 2}}">{{base.estat | limitTo : 2}}</div> </td>
+				</tr>
+			</table>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="panel panel-default">
+
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span data-i18n="Presupuesto Gesden"></span></strong>
+		</div>
+
+		<div class="panel-body">
+			<div class="grid-structure">
+				<div class="row" ng-show="pptos" ng-repeat="ppto in pptos">
+					<!--   -->
+					<!-- Resumen -->
+					<!--   -->
+
+					<div class="grid-structure">
+
+						<div class="col-sm-12 bg-warning" ng-show="$index == 0" style="padding-top: 20px;padding-bottom:20px"> 
+							<strong>{{ppto.Nombre}} {{ppto.Apellidos}}</strong><br/>
+							<span>{{ppto.Tel1}} / {{ppto.TelMovil}}</span>
+						</div>
+
+						<div class="col-sm-12" ng-show="pptos"> <br/> </div>
+						<div class="col-sm-12" style="padding-bottom:20px;"> {{notas}} </div>
+
+						<div class="col-sm-12 bg-primary" style="padding-top: 20px;padding-bottom:20px; margin-bottom:15px;">
+							<div class="col-sm-8"><strong>{{ppto.Titulo}}</strong></div>
+							<div class="col-sm-4">{{ppto.FecPresup}} <br/><br/>
+								{{ppto.Importe}}€ Total<br/>
+								{{ppto.importePresupuestado}}€ Presupuestado <button class="btn" ng-click="openPdf()">Open Pdf</button><br/>
+								<button class="btn btn-warning" ng-click="book()">Imprime</button><br/>
+								{{ppto.importeAprobado}}€ Aprobado</div>
+						</div>
+					</div>
+					<div class="row" ng-show="pptos"> <br/> </div>
+
+					<!--   -->
+					<!-- Detalle -->
+					<!--   -->
+
+					<table class="table table-condensed">
+						<tbody>
+						<tr>
+							<th>Aprob.</th>
+							<th>Descripcion</th>
+							<th>Piezas</th>
+							<th>Unidades</th>
+							<th>ImportePre</th>
+							<th>Dto</th>
+							<th>ImporteFinal</th>
+							<th>S.Ppto</th>
+							<th>S.Tto</th>
+						</tr>
+						<tr ng-repeat="det in ppto.detalles">
+							<td><span ng-show="{{det.FecAceptaBool}}" class="glyphicon glyphicon-ok"></span></td>
+							<td><small>{{det.DescripMed}}</small></td>
+							<td>{{det.Piezas}}</td>
+							<td>{{det.Unidades}}</td>
+							<td>{{det.ImportePre}}</td>
+							<td>{{det.Dto}}</td>
+							<td>{{det.ImporteFinal}}</td>
+							<td class="back-{{det.StaTto}}">{{det.StaTto}}</td>
+							<td class="back-{{det.ttomedsta}}">{{det.ttomedsta}}</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="panel panel-default">
+
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span data-i18n="Otros presupuestos del paciente"></span></strong>
+		</div>
+
+		<div class="panel-body">
+			<div class="grid-structure">
+				<!--   -->
+				<!-- Otros presupuestos del paciente -->
+				<!--   -->
+
+				<table class="table table-condensed">
+					<tbody>
+						<tr>
+							<th></th>
+							<th>Fecha</th>
+							<th>Titulo</th>
+						</tr>
+						<tr ng-repeat="ppto in lista" ng-class="{'bg-danger': ppto.FecRechazBool == 1,  'bg-success': ppto.FecAceptaBool == 1 }" ng-hide="ppto.NumPre == numero">
+							<td><a type="button" class="btn btn-info btn-xs" href="#!/pptosgesdent/{{ppto.NumPac}}/{{ppto.NumPre}}">
+								<span class="glyphicon glyphicon-play"></span>
+							</a></td>
+							<td>{{ppto.FecPresup}}</td>
+							<td>{{ppto.Titulo}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+</div>

@@ -1,0 +1,156 @@
+<div id="nav-wrapper">
+
+	<ul id="nav" data-ng-controller="NavCtrl" data-collapse-nav data-slim-scroll data-highlight-active>
+
+		<li ng-show="logged"><a href="#!/recallsdehoy"><i class="glyphicon glyphicon-phone-alt"><span class="icon-bg bg-danger"></span></i><span data-i18n="Seguimiento"></span><!--span class="badge badge-danger">{{recalls}}</span--></a></li>
+
+		<!--li ng-show="logged" ng-hide="user.centre == '7'"><a href="#!/presupuestos"><i class="fa fa-dashboard"><span class="icon-bg bg-warning"></span></i><span data-i18n="Presupuestos"></span></a></li-->
+		
+		<!--  && user.privilegis_id == '0') || logged && user.centre == '1' || logged && user.centre == '6' || logged && user.centre == '7' -->
+		<li ng-show="logged"><a href="#!/presugesdent"><i class="glyphicon glyphicon-list-alt"><span class="icon-bg bg-warning"></span></i><span data-i18n="">Presus.Gesden</span></a></li>
+
+		<li ng-show="logged"><a href="#!/controles"><i class="glyphicon glyphicon-bullhorn"><span class="icon-bg bg-danger"></span></i><span data-i18n="Controles"></span></a>
+			<ul>
+				<li><a href="#!/controles/listado"><i class="fa fa-caret-right"></i><span data-i18n="Listado Recalls"></span></a></li>
+				<li><a href="#!/controles/estado"><i class="fa fa-caret-right"></i><span data-i18n="Estado Recalls"></span></a></li>
+			</ul>
+		</li>
+
+		<li ng-show="logged && user.privilegis_id == '0'"><a href="#!/citas"><i class="glyphicon glyphicon-calendar"><span class="icon-bg bg-danger"></span></i><span data-i18n="Citas"></span></a>
+			<ul>
+				<li><a href="#!/citas/hoy"><i class="fa fa-caret-right"></i><span data-i18n="Citas de Hoy"></span></a></li>
+			</ul>
+		</li>
+
+		<li ng-show="logged"><a href="#!/sms"><i class="fa fa-paper-plane-o"><span class="icon-bg bg-success"></span></i><span data-i18n="SMS"></span></a>
+			<ul>
+				<li><a href="#!/sms/uno"><i class="fa fa-caret-right"></i></span><span data-i18n="Enviar uno"></span></a></li>
+				<li><a href="#!/sms/citas"><i class="fa fa-caret-right"></i></span><span data-i18n="Citas"></span></a></li>
+				<li><a href="#!/sms/cumples"><i class="fa fa-caret-right"></i></span><span data-i18n="Cumples"></span></a></li>
+				<li><a href="#!/sms/lista/msg"><i class="fa fa-caret-right"></i></span><span data-i18n="Mensajes"></span></a></li>
+				<li><a href="#!/sms/lista"><i class="fa fa-caret-right"></i></span><span data-i18n="Control"></span></a></li>
+			</ul>
+		</li>
+
+		<li ng-show="logged && user.privilegis_id == '0'"><a href="#!/stats"><i class="fa fa-eur"><span class="icon-bg bg-success"></span></i><span data-i18n="Facturación"></span></a>
+			<ul>
+				<li><a href="#!/stats/facturacion"><i class="fa fa-caret-right"></i><span data-i18n="Facturacion Total"></span></a></li>
+				<li><a href="#!/stats/emitidas"><i class="fa fa-caret-right"></i><span data-i18n="Facturas Emitidas"></span></a></li>
+				<li><a href="#!/stats/pagos"><i class="fa fa-caret-right"></i><span data-i18n="Pagos"></span></a></li>
+				<li><a href="#!/stats/deuda"><i class="fa fa-caret-right"></i><span data-i18n="Deuda"></span></a></li>
+				<li><a href="#!/stats/especialidades/especialidades"><i class="fa fa-caret-right"></i><span data-i18n="Facturacion Especialidades"></span></a></li>
+				<li><a href="#!/stats/presupuestados"><i class="fa fa-caret-right"></i><span data-i18n="Tratamientos Presupuestados"></span></a></li>
+				<li><a href="#!/stats/aceptados"><i class="fa fa-caret-right"></i><span data-i18n="Tratamientos Aceptados"></span></a></li>
+				<li><a href="#!/stats/cartera"><i class="fa fa-caret-right"></i><span data-i18n="Cartera de Tratamientos"></span></a></li>
+
+				<li><a href="#!/stats/facturacion/visitas"><i class="fa fa-caret-right"></i><span data-i18n="Facturacion primeras"></span></a></li>
+				<li><a href="#!/stats/facturacion/conservadora"><i class="fa fa-caret-right"></i><span data-i18n="Facturacion conservadora"></span></a></li>
+				<li><a href="#!/stats/facturacion/implantologia"><i class="fa fa-caret-right"></i><span data-i18n="Facturacion implantologia"></span></a></li>
+				<li><a href="#!/stats/facturacion/implantes"><i class="fa fa-caret-right"></i><span data-i18n="Facturacion implantes"></span></a></li>
+				<li><a href="#!/stats/facturacion/protesisobreimplante"><i class="fa fa-caret-right"></i><span data-i18n="Facturacion protesis s/imp"></span></a></li>
+				<li><a href="#!/stats/facturacion/protesisfijayremovible"><i class="fa fa-caret-right"></i><span data-i18n="Facturacion p/fija y rem."></span></a></li>
+				<li><a href="#!/stats/facturacion/dhp"><i class="fa fa-caret-right"></i><span data-i18n="Facturacion dhp"></span></a></li>
+				<li><a href="#!/stats/facturacion/rhb"><i class="fa fa-caret-right"></i><span data-i18n="Facturacion rhb"></span></a></li>
+				<li><a href="#!/stats/facturacion/ortodoncia"><i class="fa fa-caret-right"></i><span data-i18n="Facturacion ortodoncia"></span></a></li>
+				<li><a href="#!/stats/facturacion/estetica"><i class="fa fa-caret-right"></i><span data-i18n="Facturacion estetica"></span></a></li>
+				<li><a href="#!/stats/facturacion/periodoncia"><i class="fa fa-caret-right"></i><span data-i18n="Facturacion periodoncia"></span></a></li>
+				<li><a href="#!/stats/facturacion/cirugia"><i class="fa fa-caret-right"></i><span data-i18n="Facturacion cirugia"></span></a></li>
+				<li><a href="#!/stats/facturacion/odontopediatria"><i class="fa fa-caret-right"></i><span data-i18n="Facturacion odontopediatria"></span></a></li>
+
+			</ul>
+		</li>
+		<li ng-show="logged && user.privilegis_id == '0'"><a href="#!/ratios"><i class="fa fa-signal"><span class="icon-bg bg-success"></span></i><span data-i18n="Ratios"></span></a>
+			<ul>
+				<li><a href="#!/ratios/ImplantesColocados"><i class="fa fa-caret-right"></i><span data-i18n="Implantes"></span></a></li>
+				<li><a href="#!/ratios/OrtodonciaTotal"><i class="fa fa-caret-right"></i><span data-i18n="Ortodoncia"></span></a></li>
+				<li><a href="#!/ratios/OrtodonciaFija"><i class="fa fa-caret-right"></i><span data-i18n="Ortodoncia Fija"></span></a></li>
+				<li><a href="#!/ratios/Invisalign"><i class="fa fa-caret-right"></i><span data-i18n="Invisalign"></span></a></li>
+				<li><a href="#!/ratios/OrtodonciaInterceptiva"><i class="fa fa-caret-right"></i><span data-i18n="Ortodoncia Interceptiva"></span></a></li>
+				<li><a href="#!/ratios/OrtodonciaFI"><i class="fa fa-caret-right"></i><span data-i18n="Ortodoncia F.I."></span></a></li>
+				<li><a href="#!/ratios/ProtesisSobreImplantes"><i class="fa fa-caret-right"></i><span data-i18n="Protesis Sobre Implantes"></span></a></li>
+				<li><a href="#!/ratios/Carillas"><i class="fa fa-caret-right"></i><span data-i18n="Carillas"></span></a></li>
+				<li><a href="#!/ratios/Blanqueamiento"><i class="fa fa-caret-right"></i><span data-i18n="Blanqueamiento"></span></a></li>
+				<li><a href="#!/ratios/DPH"><i class="fa fa-caret-right"></i><span data-i18n="DPH"></span></a></li>
+				<!--li><a href="#!/pacs/tratamientos"><i class="fa fa-caret-right"></i><span data-i18n="Tratamientos"></span></a></li-->
+			</ul>
+		</li>
+		<li ng-show="logged && user.privilegis_id == '0'"><a href="#!/pacs"><i class="fa fa-users"><span class="icon-bg bg-success"></span></i><span data-i18n="Pacientes"></span></a>
+			<ul>
+				<li><a href="#!/pacs/pacsunicos"><i class="fa fa-caret-right"></i><span data-i18n="Pacientes Unicos"></span></a></li>
+				<li><a href="#!/pacs/citas"><i class="fa fa-caret-right"></i><span data-i18n="Citas"></span></a></li>
+				<!--li><a href="#!/pacs/tratamientos"><i class="fa fa-caret-right"></i><span data-i18n="Tratamientos"></span></a></li-->
+			</ul>
+		</li>
+		<li ng-show="logged && user.privilegis_id == '0'"><a href="#!/oper"><i class="fa fa-cog"><span class="icon-bg bg-success"></span></i><span data-i18n="Operaciones"></span></a>
+			<ul>
+				<li><a href="#!/oper/operaciones/primeras"><i class="fa fa-caret-right"></i><span data-i18n="Primeras Visitas"></span></a></li>
+				<li><a href="#!/oper/operaciones/primerascolectivo"><i class="fa fa-caret-right"></i><span data-i18n="Primeras Colectivos"></span></a></li>
+				<li><a href="#!/oper/operaciones/totalprimeras"><i class="fa fa-caret-right"></i><span data-i18n="Primeras Total"></span></a></li>
+				<li><a href="#!/oper/primerasedad"><i class="fa fa-caret-right"></i><span data-i18n="Primeras Por Edades"></span></a></li>
+				<li><hr/></li>
+				<li><a href="#!/oper/operaciones/ImplantesColocados"><i class="fa fa-caret-right"></i><span data-i18n="Implantes Colocados"></span></a></li>
+				<li><a href="#!/oper/operaciones/ImplantesFracasados"><i class="fa fa-caret-right"></i><span data-i18n="Implantes Fracasados"></span></a></li>
+				<li><hr/></li>
+				<li><a href="#!/oper/operaciones/ProtesisSobreImplantes"><i class="fa fa-caret-right"></i><span data-i18n="Protesis Sobre Implantes"></span></a></li>
+				<li><a href="#!/oper/operaciones/ProtesisHibridas"><i class="fa fa-caret-right"></i><span data-i18n="Protesis Hibridas"></span></a></li>
+				<li><a href="#!/oper/operaciones/ProtesisFija"><i class="fa fa-caret-right"></i><span data-i18n="Protesis Fija"></span></a></li>
+				<li><a href="#!/oper/operaciones/ProtesisRemovible"><i class="fa fa-caret-right"></i><span data-i18n="Protesis Removible"></span></a></li>
+				<li><hr/></li>
+				<li><a href="#!/oper/operaciones/OrtodonciaFija"><i class="fa fa-caret-right"></i><span data-i18n="Ortodoncia Fija"></span></a></li>
+				<li><a href="#!/oper/operaciones/Invisalign"><i class="fa fa-caret-right"></i><span data-i18n="Invisalign"></span></a></li>
+				<li><a href="#!/oper/operaciones/OrtodonciaInterceptiva"><i class="fa fa-caret-right"></i><span data-i18n="Ortodoncia Interceptiva"></span></a></li>
+				<li><a href="#!/oper/operaciones/OrtodonciaTotal"><i class="fa fa-caret-right"></i><span data-i18n="Ortodoncia Total"></span></a></li>
+				<li><hr/></li>
+				<li><a href="#!/oper/operaciones/Carillas"><i class="fa fa-caret-right"></i><span data-i18n="Carillas"></span></a></li>
+				<li><a href="#!/oper/operaciones/CarillaCeramica"><i class="fa fa-caret-right"></i><span data-i18n="Carilla Ceramica"></span></a></li>
+				<li><a href="#!/oper/operaciones/CarillaComposite"><i class="fa fa-caret-right"></i><span data-i18n="Carilla Composite"></span></a></li>
+				<li><hr/></li>
+				<li><a href="#!/oper/operaciones/Blanqueamiento"><i class="fa fa-caret-right"></i><span data-i18n="Blanqueamiento"></span></a></li>
+				<li><a href="#!/oper/operaciones/EsteticaFacial"><i class="fa fa-caret-right"></i><span data-i18n="EsteticaFacial"></span></a></li>
+				<li><hr/></li>
+				<li><a href="#!/oper/operaciones/DPH"><i class="fa fa-caret-right"></i><span data-i18n="DPH"></span></a></li>
+				<li><a href="#!/oper/operaciones/DPHColectivos"><i class="fa fa-caret-right"></i><span data-i18n="DPH Colectivos"></span></a></li>
+				<li><hr/></li>
+				<li><a href="#!/oper/operaciones/RevisionesConservadora"><i class="fa fa-caret-right"></i><span data-i18n="Rev. Conservadora"></span></a></li>
+				<li><a href="#!/oper/operaciones/RevisionesOdontopediatria"><i class="fa fa-caret-right"></i><span data-i18n="Rev. Odontopediatria"></span></a></li>
+				<li><a href="#!/oper/operaciones/MantenimientosPeridontales"><i class="fa fa-caret-right"></i><span data-i18n="Mant. Peridontales"></span></a></li>
+				<li><a href="#!/oper/operaciones/RevisionesHibrida"><i class="fa fa-caret-right"></i><span data-i18n="Rev. Hibrida"></span></a></li>
+			</ul>
+		</li>
+
+		<li ng-show="logged && user.privilegis_id == '0'"><a href="#!/compras"><i class="fa fa-shopping-cart"><span class="icon-bg bg-success"></span></i><span data-i18n="Compras"></span></a>
+			<ul>
+				<li><a href="#!/compras/articles"><i class="fa fa-caret-right"></i><span data-i18n="Articulos"></span></a></li>
+				<li><a href="#!/compras/vercarro"><i class="fa fa-caret-right"></i><span data-i18n="Carro"></span><span class="badge badge-danger">{{carro}}</span></a></li>
+				<li><a href="#!/compras/verpedidos"><i class="fa fa-caret-right"></i><span data-i18n="Pedidos"></span><span class="badge badge-danger">{{pedidos}}</span></a></li>
+				<li><a href="#!/compras/verrecibidos"><i class="fa fa-caret-right"></i><span data-i18n="Recibidos"></span><span class="badge badge-danger">{{recibidos}}</span></a></li>
+				<!--li><a href="#!/pacs/tratamientos"><i class="fa fa-caret-right"></i><span data-i18n="Tratamientos"></span></a></li-->
+			</ul>
+		</li>
+
+		<li ng-show="logged && user.privilegis_id == '0'"><a href="#!/gestion"><i class="fa fa-cog"><span class="icon-bg bg-success"></span></i><span data-i18n="Preferencias"></span></a>
+			<ul>
+				<li><a href="#!/gestion/colectivos"><i class="fa fa-caret-right"></i><span data-i18n="Colectivos"></span></a></li>
+				<!--li><a href="#!/gestion/incluyes"><i class="fa fa-caret-right"></i><span data-i18n="Incluyes"></span></a></li-->
+				<li><a href="#!/gestion/articulos"><i class="fa fa-caret-right"></i><span data-i18n="Articulos"></span></a></li>
+				<li><a href="#!/gestion/proveedores"><i class="fa fa-caret-right"></i><span data-i18n="Proveedores"></span></a></li>
+				<li><a href="#!/gestion/personal"><i class="fa fa-caret-right"></i><span data-i18n="Personal"></span></a></li>
+				<li><a href="#!/gestion/fichar"><i class="fa fa-caret-right"></i><span data-i18n="Fichar"></span></a></li>
+				<!--li><a href="#!/pacs/tratamientos"><i class="fa fa-caret-right"></i><span data-i18n="Tratamientos"></span></a></li-->
+			</ul>
+		</li>
+
+		<li ng-show="ficharactivo"><a href="#!/fichar"><i class="fa fa-arrow-right"><span class="icon-bg bg-violet"></span></i><span data-i18n="Fichar"></span></a></li>
+		
+		<li ng-show="logged && user.privilegis_id == '2' "><a href="#!/fichar"><i class="fa fa-arrow-right"><span class="icon-bg bg-violet"></span></i><span data-i18n="Especial"></span></a>
+			<ul>
+				<li><a href="#!/gestion/fichar"><i class="fa fa-caret-right"></i><span data-i18n="Fichaje"></span></a></li>
+			</ul>
+		</li>
+
+		<li ng-show="!logged"><a href="#!/login"><i class="fa fa-arrow-right"><span class="icon-bg bg-violet"></span></i><span data-i18n="Login"></span></a></li>
+		<li ng-show="logged"><a href="#!/logout"><i class="fa fa-arrow-left"><span class="icon-bg bg-violet"></span></i><span data-i18n="Logout"></span></a></li>
+		<!--li><a href="#!/logout">{{nom}}</a></li-->
+		<!--li ng-show="logged"><a href="#!/books"><i class="fa fa-dashboard"><span class="icon-bg bg-danger"></span></i><span data-i18n="Books"></span></a></li-->
+	</ul>
+</div>

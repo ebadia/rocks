@@ -1,0 +1,36 @@
+<!-- script id="vsmslist" type="text/x-template" -->
+	<table id="smslist" ng-show="smsv.citas" class="table" table-condensed>
+		<thead>
+			<tr>
+				<th>box</th>
+				<th>fecha</th>
+				<th>hora</th>
+				<th>movil</th>
+				<th>status</th>
+				<th>paciente</th>
+				<th>respuesta</th>
+				<th>&nbsp;</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr v-for="i in citas" >
+				<td>{{i.box}}<br/>
+					<!--small>{{i.idcita}}</small--></td>
+				<td>{{i.fecha}}</td>
+				<td>{{i.hora}}</td>
+				<td><a ng-href="#!/sms/uno/{{i.movil}}/{{i.paciente}}">{{i.movil}}</a></td>
+				<td>{{i.status}}<span class="glyphicon glyphicon-thumbs-down" ng-hide="i.movil.length == 11"></span></td>
+				<td>{{i.paciente}}</td>
+				<td>{{i.respuesta_in}}</td>
+	
+				<td width="30px">
+					<span >&nbsp;</span>
+					<button type="button" class="btn btn-success btn-sm" ng-click="smsv.confirma(i, $index)" ng-show="i.confirmado == 0 && !(i.viene == -1 || i.viene == 1)">
+						<span class="glyphicon glyphicon-thumbs-up"></span>
+					</button>
+					<span class="glyphicon glyphicon-time" ng-show="i.reprogramado == 1"></span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+<!-- /script -->

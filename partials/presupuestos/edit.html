@@ -1,0 +1,110 @@
+<div class="page page-dashboard">
+	<a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span data-i18n="Edita Presupuesto"></span></strong>
+			<div>Id: {{ppto.id}}</div>
+			<div>Entregado: {{ppto.entrega | date:'dd-MM-yyyy'}}</div>
+			<div>Estado: {{ppto.estat}}</div>
+		</div>
+		<div class="panel-body">
+			<div class="form-container" data-ng-controller="EditaPresupuestosCtrl">
+
+				<!-- ===================== -->
+				<!-- formulario de entrada -->
+				<!-- ===================== -->
+				<form ng-submit="edita(ppto)" novalidate  class="form-horizontal">	
+ 					<div class="form-group">
+						<label for="" class="col-sm-2">Fecha de entrega</label>
+						<div class="col-sm-10">
+							<div class="input-group ui-datepicker">
+								<input type="text" 
+									class="form-control"
+									datepicker-popup="yyyy-MM-dd"
+									is-open="opened"
+									max="'2035-12-31'"
+									datepicker-options="dateOptions"
+									ng-model="ppto.entrega"
+									datepicker-append-to-body = "true"
+									current-text="Hoy"
+									clear-text="Borrar"
+									close-text="Cerrar"
+									min="minDate"
+								>
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default" ng-click="openCalendar($event)"><i class="glyphicon glyphicon-calendar"></i> Abre el Calendario</button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Paciente</label>
+						<div class="col-sm-10">
+						    <input type="text" class="form-control" data-ng-model="ppto.pacient">
+						</div>
+					</div>
+<!-- 					<div class="form-group">
+						<label for="" class="col-sm-2">Edad</label>
+						<div class="col-sm-10">
+						    <input type="text" class="form-control" data-ng-model="ppto.edat">
+						</div>
+					</div> -->
+					<div class="form-group">
+						<label for="" class="col-sm-2">Teléfono</label>
+						<div class="col-sm-10">
+						    <input type="text" class="form-control" data-ng-model="ppto.telefon">
+						</div>
+					</div>
+<!-- 					<div class="form-group">
+						<label for="" class="col-sm-2">Motivo</label>
+						<div class="col-sm-10">
+						    <select class="form-control" data-ng-model="ppto.motiu_id" data-ng-options="tto.nom for tto in ttos"></select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Motivo</label>
+
+						<label ng-repeat="tto in ttos">
+						<div class="col-sm-10">
+						    <input type="checkbox" class="form-control" checklist-model="ppto.motiu_id" checklist-value="tto.nom"></input>{{tto.nom}}
+						</div>
+						</label>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Importe</label>
+						<div class="col-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon">€</span>
+								<input type="text" class="form-control" data-ng-model="ppto.import">
+								<span class="input-group-addon">.00</span>
+							</div>
+						</div>
+					</div> -->
+					<div class="form-group">
+						<label for="" class="col-sm-2">Notas</label>
+							<div class="col-sm-10">
+								<textarea name="" id="" class="form-control" rows="4" data-ng-model="ppto.notas"></textarea>
+							</div>
+					</div>
+					<button type="submit" class="btn btn-success btn-block" ng-disabled="loginForm.$invalid"><i class="fa fa-floppy-o"></i> Actualiza</button>
+				</form>
+			</div>
+			<div class="divider"></div>
+<!-- 			<div>
+				<button class="btn btn-info btn-block" ng-click="duplica(ppto)"><i class="fa fa-plus-square-o"></i> Duplica</button>
+			</div>
+			<div class="divider"></div>
+			<div>
+				<button class="btn btn-warning btn-block" ng-click="imprime(ppto)"><i class="fa fa-file-word-o"></i> Genera Documento de Presupuesto</button>
+			</div> -->
+<!-- 			<div data-ng-controller="ModalDemoCtrl">
+				<div class="divider"></div>
+				<button class="btn btn-danger btn-block" ng-click="open(ppto)" ><i class="fa fa-trash-o fa-lg"></i> Borra Presupuesto</button>
+			</div> -->
+		</div>
+	</div>
+</div>
+

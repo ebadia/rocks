@@ -1,0 +1,60 @@
+<!-- datos de este paciente -->
+<!--  -->
+
+<div class="page page-dashboard">
+	<a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span data-i18n="Presupuestos"></span></strong>
+			<div>Id: {{ppto.NumPac}}</div>
+			<div>{{ppto.pacient}}</div>
+			<div>Tels: {{ppto.telefon}}</div>
+		</div>
+
+		<div class="panel-body">
+
+			<!-- formulario de introduccion de presupuestos de este paciente -->
+			<!--  -->
+				<!-- ===================== -->
+				<!-- formulario de edicion -->
+				<!-- ===================== -->
+				<form ng-submit="edita(ppto)" novalidate  class="form-horizontal">	
+					<div class="form-group">
+						<!--label for="" class="col-sm-2">Responsable</label-->
+						<div class="col-sm-10">
+						    <input type="hidden" class="form-control" data-ng-model="ppto.responsable">
+						    <input type="hidden" class="form-control" data-ng-model="ppto.centre">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Motivo</label>
+						<div class="col-sm-10">
+						    <select class="form-control" ng-model="ppto.motiu_id" ng-options="tto.nom for tto in ttos"></select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Importe</label>
+						<div class="col-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon">€</span>
+								<input type="text" class="form-control" data-ng-model="ppto.import">
+								<span class="input-group-addon">.00</span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Notas</label>
+							<div class="col-sm-10">
+								<textarea name="" id="" class="form-control" rows="4" data-ng-model="ppto.notas"></textarea>
+							</div>
+					</div>
+					<button type="submit" class="btn btn-success btn-block" ng-disabled="loginForm.$invalid" ng-show="ppto.estat==='Seguimiento'">Actualiza</button>
+				</form>
+	    </div>
+
+	</div>
+
+</div>

@@ -1,0 +1,136 @@
+<div class="page page-dashboard">
+    <a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+        <span class="glyphicon glyphicon-arrow-left"></span>
+    </a>
+
+	<!-- stats -->
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Resumen del mes {{mes}}/{{any}}</span></strong>
+			<div>
+				
+			<div class="divider"></div>
+
+			<!--div><slider floor="1" ceiling="12" step="1" precision="1" ng-model="mes"></div-->
+			<!--div class="btn-group" ng-repeat="i in [2013,2014,2015,2016,2017,2018,2019,2020]">
+				<button type="button" class="btn btn-default" ng-click="graficoAny(i)">{{i}}</button>
+			</div>                        
+			<div class="divider"></div>
+			<div class="btn-group" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12]">
+				<button type="button" class="btn btn-default" ng-click="graficoMes(i)">{{i}}</button>
+			</div-->                        
+
+		</div>
+		<div class="panel-body">
+
+			<div class="row">
+
+				<div class="col-lg-12 col-xsm-12">
+					<div class="panel mini-box">
+
+						<progress class="progressbar-xl">
+						    <bar value="o0" type="default">Objetivo de trimestre: {{objetivo}}</bar>
+						</progress> 
+
+						<p>					
+							<div ng-show="o0<100" class="text-center">Faltan {{deficit}} euros para alcanzar el objetivo.</div>
+							<div ng-show="o0>=100">
+								<h2 class="text-center">
+									¡Objetivo base alcanzado!
+									<i class="glyphicon glyphicon-thumbs-up"></i>
+									<i class="glyphicon glyphicon-thumbs-up"></i>
+									<i class="glyphicon glyphicon-thumbs-up"></i>
+								</h2>
+							</div>
+						</p>
+
+						<section class="panel panel-box">
+						    <div class="panel-left panel-item bg-info">
+						        <p class="size-h1">{{easypiechart.ratioobjetivo}}%</p>
+						        <p class="text-muted">del objetivo.</p>
+						    </div>
+						    <div class="panel-right panel-item bg-reverse">
+						    	<div class="col-xs-3" ng-show="easypiechart.ratioobjetivo>100"><img src="img/01-02.png"></div>
+						    	<div class="col-xs-3" ng-show="easypiechart.ratioobjetivo>125"><img src="img/01-03.png"></div>
+						    	<div class="col-xs-3" ng-show="easypiechart.ratioobjetivo>150"><img src="img/01-04.png"></div>
+						    	<div class="col-xs-3" ng-show="easypiechart.ratioobjetivo>175"><img src="img/01-05.png"></div>
+						    </div>
+						</section>
+
+					</div>
+				</div>
+
+			</div>				
+
+			<div class="row">
+
+				<div class="col-lg-6 col-xsm-6">
+					<div class="panel mini-box">
+						<!--span class="box-icon bg-success">
+							<i class="fa fa-rocket"></i>
+						</span-->
+						<div class="box-info">
+							<p class="size-h2">{{total}}<span class="size-h4"></span></p>
+							<p class="text-muted"><span data-i18n="Pendientes de aprobar"></span></p>
+						</div>
+						<div class="box-info">
+							<p class="size-h2">{{aprobados}}<span class="size-h4"></span></p>
+							<progressbar animate="true" value="easypiechart.ratiocuantos" type="info"><b>{{easypiechart.ratiocuantos}}%</b></progressbar>
+							<p class="text-muted"><span data-i18n="Aprobados del trimestre"></span></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-xsm-6">
+					<div class="panel mini-box">
+						<!--span class="box-icon bg-info">
+							<i class="fa fa-users"></i>
+						</span-->
+						<div class="box-info">
+							<p class="size-h2">{{suma | number:2}}</p>
+							<p class="text-muted"><span data-i18n="Importes Pendientes de aprobar"></span></p>
+						</div>
+						<div class="box-info">
+							<p class="size-h2">{{sumaaprobados | number:2}}<span class="size-h4"></span></p>
+							<progressbar animate="true" value="easypiechart.ratioimportes" type="success"><b>{{easypiechart.ratioimportes}}%</b></progressbar>
+							<p class="text-muted"><span data-i18n="Facturacion del trimestre"></span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- llistat -->
+	<div class="row" ng-show="pptos"> <br/> </div>
+		<table class="table table-condensed">
+			<tbody>
+				<tr data-ng-repeat="ppto in pptos" class="{{ppto.estat}}">
+
+					<!--td bgcolor="{{ppto.color}}" style="width: 4px;"></td-->
+					
+					<td>
+						<!-- Paciente -->
+						<div>{{ppto.pacient}}</a></div>
+						
+						<div ng-hide="detallame">
+							<div class="text-primary">{{ppto.notas}}</div>
+						</div>
+					</td>
+
+					<td>
+						<div>{{ppto.import | currency:'€'}}</div>
+					</td>
+
+					<td>
+						<div><span class="label label-info">{{ppto.tto}}</span></div>
+					</td>
+
+					<td>
+						<div class="label label-default" id="{{ppto.estat_curt}}">{{ppto.estat_curt}}</div>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

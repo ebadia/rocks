@@ -1,0 +1,40 @@
+<div class="page page-dashboard">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Facturacion {{variable}} </div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!data">Wait...</progressbar>
+                    <linechart id="facturacion" val="data" data-options="chart_options" class="grafic"></linechart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>{{titulo}} Datos</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> {{variable}} </th>
+                        <th> Facturacion </th>
+                    </tr>
+                    <tr ng-repeat="dato in data">
+                        <td> {{dato.any}} </td>
+                        <td> {{dato.value}} </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+

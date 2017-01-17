@@ -1,0 +1,36 @@
+<div class="page page-dashboard taula">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+			    <div class="panel-heading">
+			    	<strong><span class="glyphicon glyphicon-th"></span><span>Controles {{tipo}}s de {{mes}} del {{ano}}</span></strong>
+			    </div>
+	                <table class="table table-condensed">
+	                    <tr>
+	                        <th> Año  </th>
+	                        <th> Mes  </th>
+	                        <th>Paciente</th>
+	                        <th>Fecha</th>
+	                        <th>Descripcion</th>
+	                        <th>Tel.</th>
+	                        <th>&nbsp;</th>
+	                    </tr>
+	                    <tr ng-repeat="colectivo in colectivos">
+	                        <td> {{colectivo.ano}} </td>
+	                        <td> {{colectivo.mes}} </td>
+	                        <td> {{colectivo.Nombre}} {{colectivo.Apellidos}} </td>
+	                        <td> {{colectivo.Fecha}}</td>
+	                        <td> {{colectivo.Descripcio}} </td>
+	                        <td> {{colectivo.TelMovil}} </td>
+	                        <td> 
+<!-- 		 						<button type="button" class="btn btn-danger btn-xs" data-ng-click="deleteControl(colectivo.id)" tooltip="Borrar">
+									<span class="glyphicon glyphicon glyphicon-remove-circle"></span>
+								</button> -->
+							</td>
+	                    </tr>
+	                </table>
+                </div>
+            </section>            
+        </div>        
+    </div>
+</div>

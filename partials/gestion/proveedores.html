@@ -1,0 +1,75 @@
+<div class="page page-dashboard">
+
+	<!--a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a-->
+	<a id="formulario"></a>
+
+
+<!-- formulario -->
+
+	<div class="panel panel-default">
+
+		<!-- lista de contactos de seguimiento -->
+
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Introduccion y Edicion de Proveedores</span></strong>
+			<span style="float: right;">
+			</span>
+		</div>
+
+		<div class="panel-body">
+			<form ng-submit="onSubmit()">
+			  <formly-form model="proveedor" fields="proveedoresFields" options="options">
+			    <button type="submit" class="btn btn-success btn-sm" >Envia</button>
+			    <button type="button" class="btn btn-default btn-sm" ng-click="options.resetModel()">Reset</button>
+			  </formly-form>
+			</form>
+		</div>
+
+
+	</div>
+
+<!-- listado -->
+
+	<div class="panel panel-default">
+
+		<!-- lista de contactos de seguimiento -->
+
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Listado de Proveedores</span></strong>
+			<span style="float: right;">
+			</span>
+		</div>
+
+		<div class="panel-body">
+
+			<div ng-hide="proveedores"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+
+			<table ng-show="proveedores" class="table" table-condensed>
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Proveedor<br/><input type="text" class="form-control" placeholder="Buscar proveedor..." ng-model="busca.nom"></th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="ppto in proveedores| filter:busca">
+						<td width="10%">{{ppto.id}}</td>
+						<td width="80%">{{ppto.nom}}</td>
+
+						<td width="10%">
+							<button type="button" class="btn btn-success btn-sm" ng-click="editar(ppto)">
+								<span class="glyphicon glyphicon-edit"></span>
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+	</div>
+
+</div>

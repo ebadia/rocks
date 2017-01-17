@@ -1,0 +1,54 @@
+<div class="page page-dashboard">
+
+    <section class="panel panel-default">
+
+	    <div class="panel-heading">
+            <span class="glyphicon glyphicon-th"></span>Citas de {{fecha | fecha}}
+            <span style="float: right;">
+                <button class="btn btn-success btn-sm" ng-click="menos()">Menos</button>
+                <button class="btn btn-success btn-sm" ng-click="mas()">Mas</button>
+            </span>
+        </div>
+
+	    <div class="panel-body">
+
+            <table class="table table-condensed">
+                <tr>
+                    <th> Hora </th>
+                    <th> Texto </th>
+                </tr>
+                <tr ng-repeat="cita in citas">
+                	<td>
+                		{{cita.quehora}}<br/>
+                		<div class="text-warning">{{cita.llega}}</div>
+                        <div class="text-info">{{cita.Descripcio}}</div>
+                        <div class="text-info">{{cita.Movil}}</div>
+                        <div>
+                            <span class="label label-default" ng-show="cita.Recordada === 0">
+                                <span class="glyphicon glyphicon-volume-off"></span>
+                            </span>
+                            <span class="label label-info" ng-show="cita.Recordada === 1">
+                                <span class="glyphicon glyphicon-bell"></span>
+                            </span>
+                            <span class="label label-danger" ng-show="cita.Recordada === 9">
+                                <span class="glyphicon glyphicon-thumbs-down"></span>
+                            </span>
+                        </div> 
+                	</td>
+                    <td>
+                    <span class="text-warning">{{cita.box}}</span><br/>
+                    <!--a type="button" class="btn btn-info btn-xs" href="#!/pptosgesdent/{{cita.NumPac}}/0">
+                    	<span class="glyphicon glyphicon-play"></span>
+                    </a-->
+                    <strong>{{cita.Texto}}<strong><br/>
+                    <!--strong>{{cita.Nombre}} {{cita.Apellidos}}</strong><br/-->
+                    <small>{{cita.IdOpc}}</small><br/>
+                    <small>{{cita.NOTAS}}</small>
+					</td>
+                </tr>
+            </table>
+
+		</div>
+    </section>            
+
+</div>

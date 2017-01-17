@@ -1,0 +1,23 @@
+0	16	*	*	0	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/semanal-graphs.php 1
+0	16	*	*	0	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/semanal-graphs.php 2
+0	16	*	*	0	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/semanal-graphs.php 6
+0	16	*	*	0	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/semanal-graphs.php 7
+00	4	*	*	2-6	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/gracias2.php 1
+00	4	*	*	2-6	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/gracias2.php 2
+00	4	*	*	1,2,3	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/citasTM.php 1 2
+00	4	*	*	1,2,3	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/citasTM.php 2 2
+00	4	*	*	1,2,3	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/citasTM.php 7 2
+00	4	*	*	1	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/citasTM.php 1 1
+00	4	*	*	1	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/citasTM.php 2 1
+00	4	*	*	1	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/citasTM.php 7 1
+00	4	*	*	5	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/citasTM.php 1 3
+00	4	*	*	5	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/citasTM.php 2 3
+00	4	*	*	5	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/citasTM.php 7 3
+30	2	*	*	*	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/cumplesTM.php 1
+30	2	*	*	*	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/cumplesTM.php 2
+05	*/2	*	*	*	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/statusTM.php 1 >/dev/null 2>&1
+05	*/2	*	*	*	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/statusTM.php 2 >/dev/null 2>&1
+05	*/2	*	*	*	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/statusTM.php 7 >/dev/null 2>&1
+*/15	*	*	*	*	wget -O /dev/null http://eneresi-implantes.com/wp-content/plugins/myMail/cron.php?3291c6455dbef790b81d8be067e09602 > /dev/null 2>&1
+0	8	1	*	*	/usr/local/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/smsMensual.php
+0	2	19	12	*	/opt/php56/bin/php /home3/eneresi/public_html/eneresi.rocks/robots/ebp_nexmo_envia.php

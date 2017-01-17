@@ -1,0 +1,170 @@
+<div class="page page-dashboard">
+    <!-- stats -->
+    <div class="panel panel-default">
+        <!--div><slider floor="1" ceiling="12" step="1" precision="1" ng-model="mes"></div-->         
+        <!-- <span style="float: right;">
+			<button type="button" class="btn btn-success" ng-click="init()"><span class="glyphicon glyphicon-refresh"></span></button>
+		</span> -->         
+        <div class="panel-heading">
+            <strong><span class="glyphicon glyphicon-th"></span><span>RocksResumen. Seguimiento de presupuestos</span></strong>&nbsp;
+            <button class="btn btn-sm btn-warning hidden-print" ng-click="pulsame()" ng-show="user.super == '1'">
+                <span class="glyphicon glyphicon-send"></span>Correo 
+            </button>
+        </div>
+        <div class="panel-body" data-pg-name="Panel body">
+            <div class="row">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12"> 
+                    <form ng-submit="feina(real)" class="form-normal">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <div class="input-group"> 
+                                    <span title="desde" class="control-label">
+    desde:&nbsp;</span>
+                                    <input placeholder="desde" size="2" ng-model="real.ddia">
+                                    <input placeholder="desde" size="2" ng-model="real.dmes">
+                                    <input placeholder="desde" size="4" ng-model="real.dany">
+                                </div>                                 
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <div class="input-group">
+                                    <span title="desde" class="control-label">
+    hasta: &nbsp;</span>
+                                    <input placeholder="hasta" size="2" ng-model="real.hdia">
+                                    <input placeholder="hasta" size="2" ng-model="real.hmes">
+                                    <input placeholder="hasta" size="4" ng-model="real.hany">                                     
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="hidden-print col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <div class=" ">
+                                        <button type="submit" class="btn btn-warning btn-xs btn-block" tooltip="Sigue">Calcula</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- //////////////// -->
+            <!-- FILA DE OBJETIVO -->
+            <!-- //////////////// -->
+            <!-- //////////////// -->
+            <!-- PROPUESTO / EXITO / OPORTUNIDADES -->
+            <!-- //////////////// -->
+            <div class="row" ng-show="user.privilegis_id == '0'" data-pg-name="Propuesto">
+                <!-- PROPUESTO -->
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="panel panel-profile">
+                        <div class="panel-heading text-center bg-info">
+                            <h3 class="ng-binding">Entregados</h3>
+                        </div>
+                        <div class="list-justified-container">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{feina.dentregado}}</p>
+                                    <p class="text-muted">Euros</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{feina.entregado}}</p>
+                                    <p class="text-muted">Número</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{feina.TMP}}</p>
+                                    <p class="text-muted">TMP</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- EXITO -->
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <div class="panel panel-profile">
+                        <div class="panel-heading text-center bg-info">
+                            <h3 class="ng-binding">Aprobados</h3>
+                        </div>
+                        <div class="list-justified-container">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{feina.daceptado}}</p>
+                                    <p class="text-muted">Euros</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{feina.aceptado}}</p>
+                                    <p class="text-muted">Número</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{feina.TMA}}</p>
+                                    <p class="text-muted">TMA</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{feina.rexit}}%</p>
+                                    <p class="text-muted">Exito</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="panel panel-profile">
+                        <div class="panel-heading text-center bg-info">
+                            <h3 class="ng-binding">Seguimiento</h3>
+                        </div>
+                        <div class="list-justified-container" ng-show="user.privilegis_id == '0'">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{feina.dseguimiento}}</p>
+                                    <p class="text-muted">Euros</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{feina.seguimiento}}</p>
+                                    <p class="text-muted">Número</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //////////////// -->
+            <!-- PROPUESTO / EXITO / OPORTUNIDADES -->
+            <!-- //////////////// -->
+            <!-- //////////////// -->
+            <!-- LISTADO DE OPORTUNIDADES -->
+            <!-- //////////////// -->
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>Listado de seguimiento ultimos 30 dias</strong> (hasta {{real.hdia}}/{{real.hmes}}/{{real.hany}})
+                    </div>
+                    <table class="table" ng-show="listado">
+                        <thead>
+                            <tr>
+                                <th>Entrega</th>
+                                <th>Paciente</th>
+                                <th>Tratamiento</th>
+                                <th>Importe</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="ppto in listado">
+                            <tr>
+                                <td>{{ppto.entrega}}</td>
+                                <td>
+                                    <strong>{{ppto.pacient}}</strong>
+                                </td>
+                                <td>{{ppto.tto}}</td>
+                                <td>{{ppto.import}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <div class="text-primary">{{ppto.notas}}</div>
+                                    <div class="text-warning">{{ppto.nota}}</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

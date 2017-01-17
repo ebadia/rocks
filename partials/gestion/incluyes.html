@@ -1,0 +1,72 @@
+<div class="page page-dashboard">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+			    <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Incluye / No incluye</div>
+					<form ng-submit="addIncluye(colectivo)" novalidate  class="form-horizontal">
+		                <table class="table table-condensed">
+		                    <tr>
+		                        <th> Nombre </th>
+		                        <th> Incluido </th>
+		                        <th>   </th>
+		                    </tr>
+		                    <tr>
+		                        <td>
+									<div class="form-group">
+										<div class="col-sm-10">
+											<textarea name="" id="" class="form-control" rows="4" data-ng-model="colectivo.nom"></textarea>
+										</div>
+									</div>
+								</td>
+		                        <td>
+									<div class="form-group">
+										<div class="col-sm-10">
+										    <select class="form-control" data-ng-model="colectivo.tipo" data-ng-options="tipo.id for tipo in tipos" ng-change=""></select>
+										</div>
+									</div>
+								</td>
+		                        <td> <button type="submit" class="btn btn-success btn-block" ng-disabled="loginForm.$invalid">Añadir</button> </td>
+		                    </tr>
+		                </table>
+	                </form>
+				</div>
+            </section>            
+        </div>        
+    </div>
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+			    <div class="panel-heading"></div>
+	                <table class="table table-condensed">
+	                    <tr>
+	                        <th> Id </th>
+	                        <th> Nombre 
+								<input type="text" ng-model="filtranom" autofocus>
+								<button class="btn btn-info btn-xs" ng-click="fitronom()">Todos</button>
+							</th>
+	                        <th> Incluido 
+									<select data-ng-model="filtratipo" data-ng-options="tipo.id for tipo in tipos" ng-change=""></select>
+									<button class="btn btn-info btn-xs" ng-click="fitrotipo()">Todos</button>
+								</div>
+							</th>
+	                        <th>  </th>
+	                    </tr>
+	                    <tr ng-repeat="colectivo in colectivos | filter:{nom:filtranom, sino:filtratipo.id}">
+	                        <td> {{colectivo.id}} </td>
+	                        <td width="60%"> {{colectivo.nom}} </td>
+	                        <td> {{colectivo.sino}} </td>
+	                        <td> 
+		 						<button type="button" class="btn btn-danger btn-xs" data-ng-click="deleteIncluye(colectivo.id)" tooltip="Borrar">
+									<span class="glyphicon glyphicon glyphicon-remove-circle"></span>
+								</button>
+							</td>
+	                    </tr>
+	                </table>
+                </div>
+            </section>            
+        </div>        
+    </div>
+</div>

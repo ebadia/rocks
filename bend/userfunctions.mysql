@@ -1,0 +1,42 @@
+DELIMITER $$
+CREATE DEFINER=`u742391297_rocks`@`localhost` FUNCTION `Confirmacion`(texto VARCHAR(128), respuesta VARCHAR(128)) RETURNS varchar(5) CHARSET utf8 COLLATE utf8_unicode_ci
+    NO SQL
+    SQL SECURITY INVOKER
+BEGIN
+    DECLARE res VARCHAR(5);
+    CASE
+        WHEN (texto is NULL) and (INSTR( UPPER(respuesta), 'NO' ) > 0 ) THEN SET res = -1;
+        WHEN (texto is NULL) and (INSTR( UPPER(respuesta), 'SI' ) > 0 ) THEN SET res = 1;
+        WHEN (texto is NULL) and (INSTR( UPPER(respuesta), 'OK' ) > 0 ) THEN SET res = 1;
+        ELSE SET res = 0;
+    END CASE;
+
+    RETURN (res);
+END
+$$
+DELIMITER ;
+
+
+
+DELIMITER $$
+CREATE DEFINER=`u742391297_rocks`@`localhost` FUNCTION `TipoSms`(`p_idcita` INT(11)) RETURNS varchar(5) CHARSET utf8 COLLATE utf8_unicode_ci
+    NO SQL
+    SQL SECURITY INVOKER
+BEGIN
+
+    DECLARE is_type VARCHAR(5);
+
+    IF (p_idcita is NULL) THEN
+        SET is_type = 'in';
+    ELSE 
+        SET is_type = 'out';
+    END IF;
+
+    RETURN (is_type);
+
+END
+$$
+DELIMITER ;
+
+
+

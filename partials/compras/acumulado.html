@@ -1,0 +1,46 @@
+<div>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Mensual</h4>
+            <div class="row">
+                <div class="col-md-6"> 
+                    <div class="thumbnail">                                  
+                        <div class="caption"> 
+                            <h3>Acumulado</h3> 
+                            <p>{{vm.acumulado}}</p>                                      
+                        </div>                                 
+                    </div>                             
+                </div>
+                <div class="col-md-6" ng-hide="vm.limite == 0">
+                    <div class="thumbnail">                                  
+                        <div class="caption"> 
+                            <h3>Límite</h3> 
+                            <p>{{vm.limite}}</p>                                      
+                        </div>                                 
+                    </div>                             
+                </div>
+            </div>                     
+        </div>
+        <div class="col-md-6">
+            <h4>Anual</h4>
+            <div class="row" >
+                <div class="col-md-6"> 
+                    <div class="thumbnail bg-info">                                  
+                        <div class="caption" > 
+                            <h3>Acumulado</h3> 
+                            <p>{{vm.acumuladoAnual}}</p>                                      
+                        </div>                                 
+                    </div>                             
+                </div>
+                <div class="col-md-6" ng-hide="vm.limiteAnual == 0">
+                    <div class="thumbnail bg-info">                             
+                        <div class="caption"> 
+                            <h3>Límite</h3> 
+                            <p>{{vm.limiteAnual}}</p>                                      
+                        </div>                                 
+                    </div>                             
+                </div>
+            </div>                     
+        </div>
+    </div>
+</div>

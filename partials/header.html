@@ -1,0 +1,34 @@
+<header class="clearfix hidden-print">
+
+   <a href="#!/" data-toggle-min-nav
+                 class="toggle-min"
+                 ><i class="fa fa-bars"></i></a>
+
+    <!-- Logo -->
+    <div class="logo">
+        <a href="#!/">
+            <span>eneresi<strong>rocks</strong></span>
+        </a>
+    </div>
+
+     </div>
+        <div class="menu-button" toggle-off-canvas>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </div>
+
+     <div class="top-nav hidden-print" ng-controller="NavCtrl">
+        <ul class="nav-left list-unstyled">
+            <li><span>Connectado como <span class="glyphicon glyphicon-paperclip"></span> {{user.nom}}</span></li>
+            <li ng-show="user.super == '1'"><span>Centro {{user.centre}} / </span></li>
+            <li ng-show="user.super == '1'"><select class="form-control" ng-model="centro.cual" ng-options="centro.nom for centro in centros" ng-change="centro()"></select></li>
+   	    </ul>
+     	<ul class="nav-right pull-right list-unstyled">
+            <li><span>Built with <span class="glyphicon glyphicon-heart"></span> by @ebadia</span></li>
+            <li></li>
+     	</ul>
+     </div>
+
+
+</header>

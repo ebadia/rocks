@@ -1,0 +1,81 @@
+<div class="page page-dashboard">
+	<a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span data-i18n="Nuevo Presupuesto"></span></strong>
+		</div>
+		<div class="panel-body">
+			<div class="form-container">
+
+				<!-- ===================== -->
+				<!-- formulario de entrada -->
+				<!-- ===================== -->
+				<form ng-submit="add(ppto)" novalidate  class="form-horizontal">	
+					<div class="form-group">
+						<!--label for="" class="col-sm-2">Responsable</label-->
+						<div class="col-sm-10">
+						    <input type="hidden" class="form-control" data-ng-model="ppto.responsable">
+						    <input type="hidden" class="form-control" data-ng-model="ppto.centre">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Identificador del Paciente</label>
+						<div class="col-sm-10">
+						    <input type="text" class="form-control" data-ng-model="ppto.NumPac" autofocus>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Nombre del Paciente</label>
+						<div class="col-sm-10">
+						    <input type="text" class="form-control" data-ng-model="ppto.Nombre" autofocus>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Apellidos del Paciente</label>
+						<div class="col-sm-10">
+						    <input type="text" class="form-control" data-ng-model="ppto.Apellidos">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Correo Electrónico</label>
+						<div class="col-sm-10">
+						    <input type="text" class="form-control" data-ng-model="ppto.Email">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Teléfono</label>
+						<div class="col-sm-10">
+						    <input type="text" class="form-control" data-ng-model="ppto.TelMovil">
+						</div>
+					</div>
+					<!--div class="form-group">
+						<label for="" class="col-sm-2">Motivo</label>
+						<div class="col-sm-10">
+						    <select class="form-control" data-ng-model="ppto.motiu_id" data-ng-options="tto.nom for tto in ttos"></select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Importe</label>
+						<div class="col-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon">€</span>
+								<input type="text" class="form-control" data-ng-model="ppto.import">
+								<span class="input-group-addon">.00</span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Notas</label>
+							<div class="col-sm-10">
+								<textarea name="" id="" class="form-control" rows="4" data-ng-model="ppto.notas"></textarea>
+							</div>
+					</div-->
+					<button type="submit" class="btn btn-success btn-block" ng-disabled="loginForm.$invalid">Nuevo</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

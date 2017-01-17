@@ -1,0 +1,230 @@
+<div class="page page-dashboard ">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default ">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-th"></span>{{titulo}}
+                    <span style="float: right;">
+                        <select class="form-controlee" ng-model="miusu" ng-options="user.Nom for user in users" ng-change="porColaborador(  miusu.IdCol)">
+                            <option value="">-- todos/colab. --</option>
+                        </select>
+                    </span>
+                </div>
+                    <div>
+                        <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!data">Wait...</progressbar>
+                        <barchart id="operacion" val="data" data-options="chart_options" class="grafic"></barchart>
+                    </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row ">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>{{titulo}} Datos</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> Mes </th>
+                        <th ng-repeat="any in anys"> {{any}} </th>
+                    </tr>
+                    <tr ng-repeat="dato in data">
+                        <td> {{$index + 1}} </td>
+                        <td ng-repeat="any in anys"> {{dato[any]}} </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+
+<div class="page page-dashboard">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>{{titulo}} / Acumulado</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!data">Wait...</progressbar>
+                    <linechart id="operacion_acum" val="data_acum" data-options="chart_options" class="grafic"></linechart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>{{titulo}} Datos Acumulado</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> Mes </th>
+                        <th ng-repeat="any in anys"> {{any}} </th>
+                    </tr>
+                    <tr ng-repeat="dato in data_acum">
+                        <td> {{$index + 1}} </td>
+                        <td ng-repeat="any in anys"> {{dato[any]}} </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+
+<!-- solo implantes fracasados ratio -->
+<div class="page page-dashboard taula" ng-show="ratiofracasoimplantes">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Ratio de fracaso de implantes</div>
+                </div>
+                <!-- FRACASO -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="panel panel-profile">
+                        <div class="panel-heading text-center bg-info">
+                            <h4 class="ng-binding">Acumulado 12 meses</h4>
+                        </div>
+                        <div class="list-justified-container">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{ratiofracasoimplantes}}</p>
+                                    <p class="text-muted">%</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel text-center panel-default">
+                    <table class="table table-condensed">
+                        <tr ng-repeat="ratio in ratios">
+                            <td> {{ratio.anyo}} </td>
+                            <td> {{ratio.ratio | number:2}} </td>
+                        </tr>
+                    </table>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+
+<!-- facturacion de las operaciones -->
+
+<div class="page page-dashboard ">
+
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default ">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>{{titulo}} Facturacion</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!data">Wait...</progressbar>
+                        <barchart id="operacionfactur" val="datafactur" data-options="chart_options" class="grafic"></barchart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row ">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>{{titulo}} Datos Facturacion</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> Mes </th>
+                        <th ng-repeat="any in anys"> {{any}} </th>
+                    </tr>
+                    <tr ng-repeat="dato in datafactur">
+                        <td> {{$index + 1}} </td>
+                        <td ng-repeat="any in anys"> {{dato[any]}} </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+
+<div class="page page-dashboard">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>{{titulo}} / Facturacion Acumulado</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!data">Wait...</progressbar>
+                    <linechart id="operacionfactur_acum" val="datafactur_acum" data-options="chart_options" class="grafic"></linechart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>{{titulo}} Datos Facturacion Acumulado</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> Mes </th>
+                        <th ng-repeat="any in anys"> {{any}} </th>
+                    </tr>
+                    <tr ng-repeat="dato in datafactur_acum">
+                        <td> {{$index + 1}} </td>
+                        <td ng-repeat="any in anys"> {{dato[any]}} </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row ">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>{{titulo}} Precios Medios Datos</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> Medias </th>
+                        <th ng-repeat="any in anys"> {{any}} </th>
+                    </tr>
+                    <tr ng-repeat="dato in datafactur_media">
+                        <td> {{$index + 1}} </td>
+                        <td ng-repeat="any in anys"> {{dato[any] | number : 1}} </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+
+
+
+

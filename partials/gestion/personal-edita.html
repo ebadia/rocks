@@ -1,0 +1,33 @@
+<div class="page page-dashboard">
+
+	<!--a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a-->
+	<a id="formulario"></a>
+
+<!-- formulario -->
+
+	<div class="panel panel-default">
+
+		<!-- lista de contactos de seguimiento -->
+
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Introduccion y Edicion de Personal</span></strong>
+			<span style="float: right;">
+			</span>
+		</div>
+
+		<div class="panel-body" ng-show="fxv.centros">
+			<form ng-submit="fxv.onSubmit()">
+			  <formly-form model="fxv.personal" fields="fxv.fields" options="fxv.options" form="fxv.personalForm">
+			    <button type="submit" class="btn btn-success btn-sm" >Envia</button>
+			    <button type="button" class="btn btn-default btn-sm" ng-show="!fxv.edita" ng-click="fxv.reset()">Reset</button>
+			    <a type="button" class="btn btn-default btn-sm" ng-href="#!/gestion/personal">Cancela</a>
+			  </formly-form>
+			</form>
+		</div>
+
+
+	</div>
+
+</div>

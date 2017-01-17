@@ -1,0 +1,211 @@
+<div class="page page-dashboard">
+	<a href="#!/controles/listado" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a>
+
+	<div class="panel panel-profile">
+		<div class="panel-heading bg-info clearfix">
+			<strong><span class="glyphicon glyphicon-th"></span><span data-i18n="Detalles de Recall"></span></strong>
+            <h2>{{recall.Nombre}} {{recall.Apellidos}}</h2>
+            <h4>{{recall.edad}} Años</h4>
+            <h4>{{recall.TelMovil}} / {{recall.Tel1}} / {{recall.Tel2}}</h4>
+            <h4>{{recall.Descripcio}}</h4>
+            <p>{{recall.Comentario}}</p>
+		</div>
+		<div class="panel-body">
+
+			<div class="col-sm-4">
+                <section class="panel panel-box">
+                    <div class="panel-top bg-success">
+                        <i class="fa fa-phone text-large"></i>
+                    </div>
+                    <div class="panel-bottom bg-reverse">
+<!--                         <p class="size-h1">TRUCADES</p>
+ -->                        <p class="text-muted">
+<label class="switch switch-success" ng-show="!recall.Citado">1
+	<input type="checkbox" ng-model="recall.llamada1" class="ng-pristine ng-valid" ng-change="llama1(recall.NumRec,recall.llamada1)"><i></i></label>
+<label class="switch switch-success" ng-show="recall.llamada1 && !recall.Citado">2
+	<input type="checkbox" ng-model="recall.llamada2" class="ng-pristine ng-valid" ng-change="llama2(recall.NumRec,recall.llamada2)"><i></i></label>
+<label class="switch switch-success" ng-show="recall.llamada2 && !recall.Citado">3
+	<input type="checkbox" ng-model="recall.llamada3" class="ng-pristine ng-valid" ng-change="llama3(recall.NumRec,recall.llamada3)"><i></i></label>
+							</p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-sm-2">
+                <section class="panel panel-box">
+                    <div class="panel-top bg-success">
+                        <i class="fa fa-signal text-large"></i>
+                    </div>
+                    <div class="panel-bottom bg-reverse">
+<!--                         <p class="size-h1">SMS</p>
+ -->                        <p class="text-muted">
+<label class="switch switch-success" >
+	<input type="checkbox" ng-model="recall.SMS" class="ng-pristine ng-valid" ng-change="sendSMS(recall,recall.SMS)"><i></i></label>
+</p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-sm-2">
+                <section class="panel panel-box">
+                    <div class="panel-top bg-success">
+                        <i class="fa fa-mail-forward text-large"></i>
+                    </div>
+                    <div class="panel-bottom bg-reverse">
+<!--                         <p class="size-h1">EMAIL</p>
+ -->                        <p class="text-muted">
+<label class="switch switch-success" ng-show="recall.llamada3 && !recall.Citado && recall.Email">
+	<input type="checkbox" ng-model="recall.Email" class="ng-pristine ng-valid" ng-change="mail(recall.NumRec,recall.Email)"><i></i></label>
+</p>
+                    </div>
+                </section>
+            </div>
+            <div class="col-sm-2">
+                <section class="panel panel-box">
+                    <div class="panel-top bg-success">
+                        <i class="fa fa-envelope text-large"></i>
+                    </div>
+                    <div class="panel-bottom bg-reverse">
+<!--                         <p class="size-h1">CARTA</p>
+ -->                        <p class="text-muted">
+<label class="switch switch-success" ng-show="recall.llamada3 && !recall.Citado">
+	<input type="checkbox" ng-model="recall.Carta" class="ng-pristine ng-valid" ng-change="carta(recall.NumRec,recall.Carta)"><i></i></label>
+							</p>
+                    </div>
+                </section>
+            </div>
+            <div class="col-sm-2">
+                <section class="panel panel-box">
+                    <div class="panel-top bg-success">
+                        <i class="fa fa-check text-large"></i>
+                    </div>
+                    <div class="panel-bottom bg-reverse">
+<!--                         <p class="size-h1">CITAT</p>
+ -->                        <p class="text-muted">
+<label class="switch switch-success"><input type="checkbox" ng-model="recall.Citado" class="ng-pristine ng-valid" ng-change="citado(recall.NumRec,recall.Citado)"><i></i></label>
+
+							</p>
+                    </div>
+                </section>
+            </div>
+
+		</div>
+	</div>
+</div>
+
+
+<!-- LLISTAT DELS DETALLS EN TRES COLUMNES: CITES, TTOS, ALARMES -->
+
+<div class="page page-dashboard">
+	<a href="#!/controles/listado" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a>
+
+	<div class="panel panel-profile">
+		<div class="panel-heading bg-info clearfix">
+			<strong><span class="glyphicon glyphicon-th"></span><span data-i18n="Datos"></span></strong>
+		</div>
+		<div class="panel-body">
+
+			<div ng-hide="citas"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+			<div class="col-md-2">
+				<table class="table" table-condensed>
+					<thead>
+						<tr>
+							<th>Citas</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-ng-repeat="ppto in citas">
+							<td>
+								<span>{{ppto.Fecha*1000 | date:'yyyy-MM-dd'}}</span>
+								<span class="glyphicon glyphicon-ok" ng-show="{{ppto.HorLlegada}}"></span>
+								<span class="glyphicon glyphicon-remove" ng-show="{{ppto.IdSitC}}"></span>
+								<div><small>{{ppto.Notas}}</small></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="col-md-6">
+				<table class="table" table-condensed>
+					<thead>
+						<tr>
+							<th></th>
+							<th>Tratamientos</th>
+							<th></th>
+							<th>&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-ng-repeat="ppto in ttos">
+							<td  bgcolor="{{ppto.color}}" style="width: 4px;"></td>
+							<td>
+								<div>{{ppto.FecIni*1000 | date:'yyyy-MM-dd'}}</div>
+								<div><strong>{{ppto.Colabora}}</strong></div>
+								<div>{{ppto.NumTto}}</div>
+
+							</td>
+							<td>
+								<div>{{ppto.Notas}}</div>
+							</td>
+
+							<td>
+								<button type="button" class="btn btn-success btn-sm" data-ng-click="aceptaRecall(ppto)" data-ng-show="ppto.estat">
+									<span class="glyphicon glyphicon-ok"></span>
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div ng-hide="controles"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+			<div class="col-md-4">
+
+				<table class="table" table-condensed>
+					<thead>
+						<tr>
+							<th>Controles</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-ng-repeat="ppto in controles">
+							<td>
+								<span>{{ppto.Fecha*1000 | date:'yyyy-MM-dd'}}</span>
+<!-- 								<span class="glyphicon glyphicon-ok" ng-show="{{ppto.HorLlegada}}"></span>
+								<span class="glyphicon glyphicon-remove" ng-show="{{ppto.IdSitC}}"></span>
+ -->								<div><small>{{ppto.Descripcio}}</small></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+
+				<table class="table" table-condensed>
+					<thead>
+						<tr>
+							<th>Alertas</th>
+							<th>&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-ng-repeat="ppto in alertas">
+							<td>{{ppto.Texto}}</td>
+
+							<td>
+								<button type="button" class="btn btn-success btn-sm" data-ng-click="aceptaRecall(ppto)" data-ng-show="ppto.estat">
+									<span class="glyphicon glyphicon-ok"></span>
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+</div>

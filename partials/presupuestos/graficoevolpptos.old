@@ -1,0 +1,58 @@
+<div class="page page-dashboard">
+    <a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+        <span class="glyphicon glyphicon-arrow-left"></span>
+    </a>
+
+    <div class="divider"></div>
+
+    <!--div><slider floor="1" ceiling="12" step="1" precision="1" ng-model="mes"></div-->
+    <div class="btn-group" ng-repeat="i in [2013,2014,2015,2016,2017,2018,2019,2020]">
+        <button type="button" class="btn btn-default" ng-click="graficoAny(i)">{{i}}</button>
+    </div>                        
+
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Cuantos</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!data">Wait...</progressbar>
+                    <barchart id="presupuestos-cuantos" val="data" data-options="chart_options_cuantos"></barchart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+
+</div>
+
+<div class="page page-dashboard">
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default" ng-show="data">
+               <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Aprobacion de casos</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!data">Wait...</progressbar>
+                    <barchart id="presupuestos-aprobacion" val="data" data-options="chart_options_aprobacion"></barchart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+
+<div class="page page-dashboard">
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default" ng-show="data">
+               <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Ratios</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!data">Wait...</progressbar>
+                    <barchart id="presupuestos-ratios" val="data" data-options="chart_options_ratios"></barchart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+

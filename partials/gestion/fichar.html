@@ -1,0 +1,49 @@
+<div class="page page-dashboard">
+
+	<!--a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a-->
+	<a id="formulario"></a>
+
+
+<!-- formulario -->
+
+	<div class="panel panel-default">
+
+		<!-- lista de contactos de seguimiento -->
+
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Activacion de la opcion de fichado</span></strong>
+			<span style="float: right;">
+			{{fxv.activo}}
+			</span>
+		</div>
+
+		<div class="panel-body">
+			<h5>Activación del fichado en este ordenador</h5>
+			<label class="switch"><input ng-model="fxv.activo" type="checkbox" ng-change="fxv.toggle()"><i></i></label>
+		</div>
+
+		<div class="panel-body">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Listado de fichado</span></strong>
+
+			<form ng-submit="fxv.onSubmit()">
+			  <formly-form model="fxv.persona" fields="fxv.fields" options="fxv.options">
+			    <button type="submit" class="btn btn-success btn-sm" >Envia</button>
+			    <!--button type="button" class="btn btn-default btn-sm" ng-show="!fxv.edita" ng-click="fxv.reset()">Reset</button>
+			    <button type="button" class="btn btn-default btn-sm" ng-show="fxv.edita" ng-click="fxv.cancela()">Cancela</button-->
+			  </formly-form>
+			</form>
+		</div>
+
+		<div class="panel-body" ng-show="fxv.visualiza">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Descarga del listado de fichado</span></strong>
+
+			<button type="button" class="btn btn-danger btn-sm" ng-click="fxv.exporta()">Descarga</button>
+
+		</div>
+
+
+	</div>
+
+</div>

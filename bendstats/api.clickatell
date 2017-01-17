@@ -1,0 +1,8 @@
+http://api.clickatell.com/http/sendmsg?user=eneresi&password=Eneresi1997&api_id=3527760&to=34601007366&text=Mensaje de texto desde Clickatell
+
+http://api.clickatell.com/http/auth?user=eneresi&password=Eneresi1997&api_id=3527760
+
+http://api.clickatell.com/http/sendmsg?session_id=8eea5ca351410a93ebc69993da649f80&to=34601007366&text=Mensaje de texto desde Clickatell
+
+
+http://api.clickatell.com/http/sendmsg?session_id=851d2866cb4b467bcd5e939184fa8cc5&from=Eneresi&to=34601007366&text=Mensaje%20de%20texto%20desde%20Clickatell&req_feat=48

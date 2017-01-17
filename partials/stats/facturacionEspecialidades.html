@@ -1,0 +1,169 @@
+<div class="page page-dashboard">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Facturacion {{any0}} ({{suma0}})</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!queso0">Wait...</progressbar>
+                    <donutchart id="facturacion0" val="queso0" data-options="chart_options" class="grafic"></donutchart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Datos {{any0}} ({{suma0}})</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> Especialidad </th>
+                        <th> Facturacion </th>
+                        <th> Peso </th>
+                    </tr>
+                    <tr ng-repeat="dato in queso0">
+                        <td> {{dato["label"]}} </td>
+                        <td> {{dato["value"]}} </td>
+                        <td> {{dato["value"] / suma0 * 100 | number:1 }}% </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+
+<div class="page page-dashboard">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Facturacion {{any1}} ({{suma1}})</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!queso1">Wait...</progressbar>
+                    <donutchart id="facturacion1" val="queso1" data-options="chart_options" class="grafic"></donutchart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Datos {{any1}} ({{suma1}})</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> Especialidad </th>
+                        <th> Facturacion </th>
+                        <th> Peso </th>
+                    </tr>
+                    <tr ng-repeat="dato in queso1">
+                        <td> {{dato["label"]}} </td>
+                        <td> {{dato["value"]}} </td>
+                        <td> {{dato["value"] / suma1 * 100 | number:1 }}% </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+
+
+<div class="page page-dashboard">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Facturacion {{any2}} ({{suma2}})</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!queso2">Wait...</progressbar>
+                    <donutchart id="facturacion2" val="queso2" data-options="chart_options" class="grafic"></donutchart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Datos {{any2}} ({{suma2}})</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> Especialidad </th>
+                        <th> Facturacion </th>
+                        <th> Peso </th>
+                    </tr>
+                    <tr ng-repeat="dato in queso2">
+                        <td> {{dato["label"]}} </td>
+                        <td> {{dato["value"]}} </td>
+                        <td> {{dato["value"] / suma2 * 100 | number:1 }}% </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+
+<div class="page page-dashboard">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Facturacion {{any3}} ({{suma3}})</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!queso2">Wait...</progressbar>
+                    <donutchart id="facturacion3" val="queso3" data-options="chart_options" class="grafic"></donutchart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Datos {{any3}} ({{suma3}})</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> Especialidad </th>
+                        <th> Facturacion </th>
+                        <th> Peso </th>
+                    </tr>
+                    <tr ng-repeat="dato in queso3">
+                        <td> {{dato["label"]}} </td>
+                        <td> {{dato["value"]}} </td>
+                        <td> {{dato["value"] / suma2 * 100 | number:1 }}% </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+

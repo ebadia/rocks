@@ -1,0 +1,130 @@
+<div class="page page-dashboard">
+
+<!-- tabla -->
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span data-i18n="Presupuestos / {{tipo}}"></span></strong>
+			<span style="float: right;">
+				<a class="btn btn-success btn-sm" href="#!/addPacPpto">Nuevo Paciente</a>
+				<a class="btn btn-success btn-sm" href="#!/oportunidades">Oportunidades</a>
+				<a class="btn btn-success btn-sm" ng-show="user.privilegis_id == '0'"href="#!/resumenpptos"><span class="glyphicon glyphicon-tasks"></span></a>
+				<a class="btn btn-success btn-sm" ng-show="user.privilegis_id == '0' && user.centre == '1'"href="#!/aoresumenpptos"><span class="glyphicon glyphicon-tower"></span></a>
+				<a class="btn btn-success btn-sm" href="#!/graficoevolpptos" ng-show="user.privilegis_id == '-1'"><span class="glyphicon glyphicon-signal"></span></a>
+				<a class="btn btn-success btn-sm" href="#!/recallsdehoy"><span class="glyphicon glyphicon-phone-alt"></span></a>
+				<button class="btn btn-success btn-sm" ng-click="purga()"><span class="glyphicon glyphicon-retweet"></span></button>
+			</span>
+		</div>
+		<div class="panel-body">
+		<div ng-hide="pptos"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+
+		<div class="roww" ng-show="pptos">
+			<div class="col-xs-12">
+	    		<div class="input-group">
+	    			<input type="text" class="form-control" placeholder="Buscar por nombre de paciente en estado [{{tipo}}]..." data-ng-model="busca.pacient">
+	    			<span class="input-group-btn">
+	    				<button class="btn" ng-click="resetFiltros()"><span class="glyphicon glyphicon-search"></span></button>
+	    			</span>
+	    		</div>
+    		</div>
+    		<!--span class="col-sm-2"><input type="text" class="form-control" placeholder="Por mes..." data-ng-model="busca.mes"></span-->
+		</div>
+		<div class="roww" ng-show="pptos">
+			<div class="col-xs-12">
+				<button class="btn btn-sm" ng-click="tots(centre, 'Todos')"><span><i class="glyphicon glyphicon-asterisk" ng-show="tipo==='Todos'"></i>Todos</span></button>
+				<button class="btn btn-sm" ng-click="tots(centre, 'Seguimiento')"><span><i class="glyphicon glyphicon-asterisk" ng-show="tipo==='Seguimiento'"></i>Seguimiento</span></button>
+				<button class="btn btn-sm" ng-click="tots(centre, 'Aceptado')"><span><i class="glyphicon glyphicon-asterisk" ng-show="tipo==='Aceptado'"></i>Aceptado</span></button>
+				<button class="btn btn-sm" ng-click="tots(centre, 'Convertido')"><span><i class="glyphicon glyphicon-asterisk" ng-show="tipo==='Convertido'"></i>Convertido</span></button>
+				<button class="btn btn-sm" ng-click="tots(centre, 'Rechazado')"><span><i class="glyphicon glyphicon-asterisk" ng-show="tipo==='Rechazado'"></i>Rechazado</span></button>
+				<button class="btn btn-sm" ng-click="tots(centre, 'Opcional')"><span><i class="glyphicon glyphicon-asterisk" ng-show="tipo==='Opcional'"></i>Opcional</span></button>
+			</div>
+		</div>
+
+		<br/>
+
+		<div class="row" ng-show="pptos"> <br/> <br/> <br/> </div>
+
+		<div class="roww" ng-show="pptos">
+    		<button class="btn btn-xs btn-success" ng-click="detallamelos()"><span class="glyphicon glyphicon-th-list"></span></button> Detalles ({{cuenta}} presupuestos en {{tipo}})
+    		<!--span class="col-sm-2"><input type="text" class="form-control" placeholder="Por mes..." data-ng-model="busca.mes"></span-->
+		</div>
+
+		<div class="row" ng-show="pptos"> <br/> </div>
+		<table class="table table-condensed">
+			<tbody>
+				<tr data-ng-repeat="ppto in pptos | filter:busca"  class="{{ppto.estat}}">
+					<!--td>{{ppto.entrega | date:'yyyy-MM-dd'}}</td-->
+
+					<td bgcolor="{{ppto.color}}" style="width: 4px;"></td>
+					<td>
+						<!-- Botones -->
+						<!--a type="button" class="btn btn-line-warning btn-xs" href="#!/editPpto/{{ppto.id}}" ng-show="ppto.estat==='Seguimiento'">
+							<span class="glyphicon glyphicon glyphicon-pencil"></span>
+						</a-->
+						<a type="button" class="btn btn-warning btn-xs" href="#!/addRecall/{{ppto.NumPac}}/{{ppto.pacient}}">
+							<span class="glyphicon glyphicon-bullhorn"></span>
+						</a>
+						<a href="#!/listaRecalls/{{ppto.NumPac}}/{{ppto.pacient}}">
+							<span class="badge badge-danger" ng-show="ppto.recalls">{{ppto.recalls}}</span>
+						</a>
+					</td>
+					
+					<td>
+						<!-- Paciente -->
+						<div>
+							<a type="button" class="btn btn-info btn-xs" href="#!/verPacPpto/{{ppto.NumPac}}">
+								<span class="glyphicon glyphicon-play"></span>
+							</a>
+							<a href="#!/editPpto/{{ppto.id}}">{{ppto.pacient}}</a> <span ng-show="$rootScope.user.super==1">/ <a href="#!/pptosgesdent/{{ppto.NumPac}}/{{ppto.id}}">Gesdent</a></span><br/>
+							<small>{{ppto.entrega}}</small> ... <small><i>{{ppto.acceptacio}}</i></small>
+
+						</div>
+						<div ng-hide="detallame">
+							<!--div><strong>{{ppto.motiu}}</strong></div-->
+							<div class="text-primary">{{ppto.notas}}</div>
+						</div>
+					</td>
+
+					<td>
+						<div>{{ppto.import | currency:'€'}}</div>
+					</td>
+
+					<td>
+						<div ng-hide="{{ppto.motiu_id}}"><span class="label label-info">{{ppto.motiu}}</span></div>
+						<div><span class="label label-info">{{ppto.tto}}</span></div>
+					</td>
+
+					<td>
+						<div class="label label-default" id="{{ppto.estat_curt}}">{{ppto.estat_curt}}</div>
+					</td>
+
+					<td>
+						<span>
+						<button type="button" class="btn btn-success btn-xs" data-ng-click="acepta(centre, ppto.id)" ng-show="ppto.estat==='Seguimiento'" tooltip="Aceptar">
+							<span class="glyphicon glyphicon-ok-circle"></span>
+						</button>
+
+						<button type="button" class="btn btn-danger btn-xs" data-ng-click="deniega(centre, ppto.id)" ng-show="ppto.estat==='Seguimiento'" tooltip="Denegar">
+							<span class="glyphicon glyphicon-remove-circle"></span>
+						</button>
+
+						<button type="button" class="btn btn-warning btn-xs" data-ng-click="opcional(centre, ppto.id)" ng-show="ppto.estat==='Seguimiento'" tooltip="Opcional">
+							<span class="glyphicon glyphicon-paperclip"></span>
+						</button>
+
+						<button type="button" class="btn btn-line-success btn-xs" data-ng-click="convierte(centre, ppto.id)" ng-hide="ppto.estat==='Seguimiento'" tooltip="Convertir">
+							<span class="glyphicon glyphicon-refresh"></span>
+						</button>
+
+						<button type="button" class="btn btn-line-warning btn-xs" data-ng-click="noacepta(centre, ppto.id)" ng-hide="ppto.estat==='Seguimiento'" tooltip="Seguimiento">
+							<span class="glyphicon glyphicon-retweet"></span>
+						</button>
+						</span>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	</div>
+</div>

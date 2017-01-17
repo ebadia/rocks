@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h3>¿Que cantidad quieres comprar de...</h3>
+    <div class="modal-title">{{compro.nom}} de {{compro.proveidor}}</div>
+</div>
+<div class="modal-body">
+    <div>
+    	<div class="input-group ui-spinner">	
+        	<span class="input-group-btn"><button type="button" class="btn btn-default" ng-click="down()"><i class="fa fa-minus"></i></button></span>
+        	<span><input type="text" class="spinner-input form-control" ng-model="cantidad"></span>
+			<span class="input-group-btn"><button type="button" class="btn btn-primary" ng-click="up()"><i class="fa fa-plus"></i></button></span>
+        </div>
+        <div> Unidades </div>
+    </div>
+    <div>
+        <span><input type="text" class="form-control" ng-model="lote"></span>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="cancel()">Cancelar</button>
+    <button class="btn btn-warning" ng-click="save()">Actualizar carro</button>
+</div>

@@ -1,0 +1,142 @@
+<div class="page page-dashboard" data-ng-controller="RecallCtrl">
+	<!--a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a-->
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Nuevo seguimiento de presupuesto para {{nom}}</span></strong>
+		</div>
+		<div class="panel-body">
+			<div class="form-container">
+				<!-- ===================== -->
+				<!-- formulario de entrada data, pressupost_id,nota-->
+				<!-- ===================== -->
+				<form ng-submit="addRecall(recall)" novalidate class="form-horizontal">	
+<!-- 					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="hidden" class="form-control" data-ng-model="recall.NumPac">
+							<input type="hidden" class="form-control" data-ng-model="recall.pressupost_id">
+						</div>
+					</div>
+ -->
+					<div class="form-group">
+						<label for="" class="col-sm-2">Aviso opcional en...</label>
+						<div class="col-sm-10">
+							<button type="button" class="btn btn-info" ng-click="en(1)"> En 1 semana </button>
+							<button type="button" class="btn btn-info" ng-click="en(2)"> En 2 semanas </button>
+							<button type="button" class="btn btn-info" ng-click="en(3)"> En 3 semanas </button>
+							<button type="button" class="btn btn-info" ng-click="en(4)"> En 4 semanas </button>
+						</div>
+					</div>
+
+ 					<div class="form-group">
+						<label for="" class="col-sm-2">ó en fecha</label>
+						<div class="col-sm-10">
+							<div class="input-group ui-datepicker">
+								<input type="text" 
+									class="form-control"
+									datepicker-popup="yyyy-MM-dd"
+									is-open="opened"
+									max="'2035-12-31'"
+									datepicker-options="dateOptions"
+									ng-model="recall.data"
+									datepicker-append-to-body = "true"
+									close-text="Cerrar"
+									min="minDate"
+								>
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default" ng-click="openCalendar($event)"><i class="glyphicon glyphicon-calendar"></i> Abre el Calendario</button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Nota</label>
+							<div class="col-sm-10">
+								<textarea name="" id="" class="form-control" rows="4" data-ng-model="recall.notas"></textarea>
+							</div>
+					</div>
+					<button type="submit" class="btn btn-success btn-block" ng-disabled="loginForm.$invalid">Añadir anotación</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+<!-- tabla -->
+
+ 	<!--div class="panel panel-default">
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Recalls de {{nom}}</span></strong>
+		</div>
+		<div class="panel-body">
+			<div ng-hide="recalls"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Fecha</th>
+						<th>Responsable</th>
+						<th>Notas</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat="ppto in recalls">
+						<td>{{ppto.data | date:'dd-MM-yyyy'}}</td>
+						<td>{{ppto.encarregat}}</td>
+						<td>{{ppto.notas}}</td>
+
+						<td>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div-->
+<!-- tabla -->
+
+<!-- tabla -->
+
+ 	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Entradas medicas {{nom}}</span></strong>
+		</div>
+		<div class="panel-body">
+			<div ng-hide="ttos"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+			<!-- lista de entradas medicas de gesdent -->
+				<table class="table" table-condensed ng-show="ttos">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Tratamientos</th>
+							<th></th>
+							<th>&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-ng-repeat="ppto in ttos">
+							<td  bgcolor="{{ppto.color}}" style="width: 4px;"></td>
+							<td>
+								<div>{{ppto.FecIni*1000 | date:'yyyy-MM-dd'}}</div>
+								<div><strong>{{ppto.Colabora}}</strong></div>
+								<div>{{ppto.NumTto}}</div>
+
+							</td>
+							<td>
+								<div>{{ppto.Notas}}</div>
+							</td>
+
+							<td>
+								<button type="button" class="btn btn-success btn-sm" data-ng-click="aceptaRecall(ppto)" data-ng-show="ppto.estat">
+									<span class="glyphicon glyphicon-ok"></span>
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+	</div>
+<!-- tabla -->
+
+
+</div>

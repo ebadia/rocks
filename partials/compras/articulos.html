@@ -1,0 +1,74 @@
+<div class="page page-dashboard">
+
+	<!--a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a-->
+
+<!-- tabla -->
+
+	<div class="panel panel-default">
+
+		<!-- lista de contactos de seguimiento -->
+
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Listado de Articulos</span></strong>
+			<span style="float: right;">
+				<!--a type="button" class="btn btn-danger btn-sm" href="#!/compras/vercarro">
+					<span class="glyphicon glyphicon-shopping-cart">&nbsp;{{carro}}</span>
+				</a-->
+			</span>
+		</div>
+
+		<div class="panel-body">
+
+			<div ng-hide="articulos"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+			<!--div> {{busca}}</div-->
+			<table ng-show="articulos" class="table" table-condensed>
+				<thead>
+					<!--tr>
+						<th colspan="3">
+							<formly-form model="busca" fields="fields" options="options">
+						</th>
+						<th colspan="1" style="vertical-align: middle;"><button type="button" class="btn btn-danger" ng-click="options.resetModel()"> x </button></th>
+					</tr-->
+					<tr>
+						<th colspan="2">
+							<input type="text" ng-model="numAlbaran">
+						</th>
+						<th colspan="2">
+							<input type="text" ng-model="valorAlbaran">
+						</th>
+					</tr>
+					<tr>
+						<th colspan="4">
+							<input id="buscame" type="text" auto-focus ng-model="buscame" ng-change="compra(buscame)" ng-model-options="{ debounce: 10 }">
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="ppto in albaran | filter:busca">
+						<td width="10%">{{ppto.cantidad}}</td>
+						<td width="70%">{{ppto.nom}}</td>
+						<td width="15%">{{ppto.proveidor}}</td>
+
+						<td width="5%">
+							<button type="button" class="btn btn-warning btn-sm" ng-click="quitamedelalbaran($index)">
+								<span class="glyphicon glyphicon-shopping-cart"></span>
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="panel-heading">
+				<span style="float: right;">
+					<button type="button" class="btn btn-danger btn-sm" ng-click="validaAlbaran()" ng-disabled="numAlbaran===''">Valida Albaran</button>
+				</span>
+			</div>
+
+		</div>
+
+
+	</div>
+
+</div>

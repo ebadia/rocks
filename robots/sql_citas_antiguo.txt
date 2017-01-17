@@ -1,0 +1,36 @@
+        select a.*,
+        dcitasop.*,
+        pacientes.*,
+        tsitcita.*,
+        tusuagd.Descripcio as box,
+        convert(varchar, cast(CAST(hora / 86399.0 as datetime) as time), 108) as quehora,
+        convert(varchar, cast(CAST(horllegada / 86399.0 as datetime) as time), 108) as llega
+
+        from DCitas as a
+        
+        /* necesario para aislar los pacientes que tienen mas de una cosa programada */
+        /* y enviar un solo smsm */
+        inner join ( 
+            select distinct idpac, min(idorden) as id
+            from dcitas 
+            WHERE 
+            DCitas.Fecha = CAST(CAST('".$fecha."' AS DATETIME) AS INT) + 2 
+            /* añadido 20150924 para evitar que no envie si tiene 2 citas pero 1 anulada */
+            and IdSitC = 0 
+            and DCItas.Movil <> '' 
+            and DCitas.IdPac is not NULL "
+            . $subcentro .
+            " group by idpac
+        ) as b
+        on (a.idorden = b.id and a.idpac = b.idpac)
+
+        left join dcitasop on a.idusu=dcitasop.idusu and a.idorden=dcitasop.idorden
+        left join pacientes on pacientes.numpac=a.numpac
+        left join tsitcita on tsitcita.idsitc=a.idsitc
+        left join tusuagd on a.idusu=tusuagd.idusu
+
+        WHERE 
+        fecha = CAST(CAST('".$fecha."' AS DATETIME) AS INT) + 2
+        and a.IdSitC = 0 
+        and Pacientes.AceptaSMS = 1 
+        order by tusuagd.Descripcio, hora asc

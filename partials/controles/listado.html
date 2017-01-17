@@ -1,0 +1,85 @@
+<div class="page page-dashboard">
+
+<!-- 	<a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a>
+ -->
+<!-- tabla -->
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Recalls de Control ({{mes}}/{{ano}})</span></strong>
+			<span style="float: right;">
+				<a class="btn btn-success btn-sm" href="#!/controles/listacartas">Cartas</a>
+			</span>
+
+			<div class="divider"></div>
+
+			<!--div><slider floor="1" ceiling="12" step="1" precision="1" ng-model="mes"></div-->
+			<div class="btn-group" ng-repeat="i in [2013,2014,2015,2016,2017,2018,2019,2020]">
+				<button type="button" class="btn btn-default" ng-click="setAno(i)">{{i}}</button>
+			</div>                        
+			<div class="divider"></div>
+			<!-- <span style="float: right;">
+				<button type="button" class="btn btn-success" ng-click="init()"><span class="glyphicon glyphicon-refresh"></span></button>
+			</span> -->
+			<div class="btn-group" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12]">
+				<button type="button" class="btn btn-default" ng-click="setMes(i)">{{i}}</button>
+			</div>                        
+
+		</div>
+		<div class="panel-body">
+			<div ng-hide="recalls"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+    		<div class="input-group">
+    			<input type="text" class="form-control" placeholder="Por paciente..." data-ng-model="busca.Apellidos">
+    			<span class="input-group-btn">
+    				<button class="btn" ng-click="resetFiltros()"><span class="glyphicon glyphicon-search"></span></button>
+    			</span>
+    		</div>
+			<table class="table" table-condensed>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Fecha</th>
+						<th>Paciente</th>
+						<th>Descripcion</th>
+						<th>Movil</th>
+						<th>Fijo</th>
+						<th>Fijo</th>
+<!-- 						<th>Estados</th>
+ -->						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat="ppto in recalls | filter:busca">
+						<td  bgcolor="{{ppto.color}}" style="width: 4px;"></td>
+						<td>{{ppto.Fecha*1000 | date:"yyyy-MM-dd"}}</td>
+						<td><a href="#!/controles/detalles/{{ppto.NumRec}}">{{ppto.Nombre}} {{ppto.Apellidos}}</a>
+							 <span ng-show="ppto.IdCentro"> /{{ppto.IdCentro}}/</span></td>
+						<td><strong>{{ppto.Descripcio}}</strong><br/>
+						{{ppto.Comentario}}</td>
+						<td>{{ppto.TelMovil}}</td>
+						<td>{{ppto.Tel1}}</td>
+						<td>{{ppto.Tel2}}</td>
+<!-- 						<td>
+							Telef: {{ppto.Telefono}}<br/>
+							Carta: {{ppto.Carta}}<br/>
+							Email: {{ppto.Email}}<br/>
+							SMS: {{ppto.SMS}}<br/>
+							Asist: {{ppto.Asistido}}<br/>
+							Citado: {{ppto.Citado}}<br/>
+						</td>
+ -->
+						<td>
+							<button type="button" class="btn btn-success btn-sm" data-ng-click="aceptaRecall(ppto)" data-ng-show="ppto.estat">
+								<span class="glyphicon glyphicon-ok"></span>
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+<!-- tabla -->
+</div>

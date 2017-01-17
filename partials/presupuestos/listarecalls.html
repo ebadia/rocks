@@ -1,0 +1,95 @@
+<div class="page page-dashboard">
+
+	<a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a>
+
+<!-- tabla -->
+
+	<div class="panel panel-default">
+
+		<!-- lista de contactos de seguimiento -->
+
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Recalls de Presupuestos de {{nom}}</span></strong>
+			<div><span class="label label-info" ng-repeat="ppto in pptos">{{ppto.tto}}</span>
+				<span style="float: right;">
+					<a class="btn btn-success btn-sm" href="#!/addRecall/{{id}}/{{nom}}">Nuevo</a>
+				</span>
+			</div>
+		</div>
+
+		<!--div class="panel-body">
+
+			<div ng-hide="recalls"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+
+			<table class="table" table-condensed>
+				<thead>
+					<tr>
+						<th>Fecha</th>
+						<th>Responsable</th>
+						<th>Notas</th>
+						<th>Paciente</th>
+						<th>Telefono</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="ppto in recalls">
+						<td>{{ppto.data | date:'yyyy-MM-dd'}}</td>
+						<td>{{ppto.encarregat}}</td>
+						<td>{{ppto.notas}}</td>
+						<td>{{ppto.nom}}</td>
+						<td>{{ppto.telefon}}</td>
+
+						<td>
+							<button type="button" class="btn btn-success btn-sm" ng-click="aceptaRecall(ppto)" ng-show="ppto.estat == 1">
+								<span class="glyphicon glyphicon-ok"> Hecho</span>
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div-->
+
+		<!-- lista de entradas medicas de gesdent -->
+
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Entradas Medicas {{nom}}</span></strong>
+		</div>
+
+		<div class="panel-body">
+
+			<div ng-hide="ttos"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+
+			<table class="table" table-condensed ng-show="ttos">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Tratamientos</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="ppto in ttos">
+						<td bgcolor="{{ppto.color}}" style="width: 4px;"><small>{{ppto.NumTto}}</small></td>
+						<td>
+							<div >{{ppto.FecFin | date:'yyyy-MM-dd'}}</div>
+							<div>{{ppto.FecIni*1000 | date:'yyyy-MM-dd'}}</div>
+							<div><strong>{{ppto.Colabora}}</strong></div>
+
+						</td>
+						<td>
+							<div ng-show="{{ppto.alarma}}"><button class="btn btn-danger btn-lg"ng-click="aceptaRecalldeHoyGD(ppto)"><i class="glyphicon glyphicon-bell"></i></button><small>{{ppto.fechaalarma}}</small></div>
+							<div><strong>{{ppto.Notas}}</strong></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+	</div>
+
+<!-- tabla -->
+</div>

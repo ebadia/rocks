@@ -1,0 +1,66 @@
+<div class="page page-dashboard">
+
+	<!--a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a-->
+
+<!-- tabla -->
+
+	<div class="panel panel-default">
+
+		<!-- lista de contactos de seguimiento -->
+
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Cesta de pedidos</span></strong>
+			<span style="float: right;">
+				<a type="button" class="btn btn-danger btn-sm" href="#!/compras/verdevoluciones">
+					Devoluciones
+				</a>
+			</span>
+		</div>
+
+		<div class="panel-body">
+		
+			<gastos-acumulados en="{{fecha}}" centro="{{centro}}"></gastos-acumulados>
+
+			<div ng-hide="articulos"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+			<!--div>{{items}}</div-->
+
+			<table ng-show="articulos" class="table" table-condensed>
+				<thead>
+					<tr>
+						<th>Fecha</th>
+						<th>Articulo</th>
+						<th>Cantidad</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="ppto in articulos| filter:busca">
+						<td width="20%">{{ppto.fecha}}</td>
+						<td width="55%">
+							<div>{{ppto.article}}</div>
+							<div class="text-primary">{{ppto.proveidor}}</div>
+						</td>
+						<td width="10%">{{ppto.cantidad}}</td>
+
+						<td width="15%">
+							<button type="button" class="btn btn-success btn-xs" ng-click="confirmatotal(ppto)" tooltip="Confirma Total">
+								<span class="glyphicon glyphicon-check"></span>
+							</button>
+							<button type="button" class="btn btn-warning btn-xs" ng-click="confirmaparcial(ppto)" tooltip="Confirma Parcial">
+								<span class="glyphicon glyphicon-edit"></span>
+							</button>
+							<button type="button" class="btn btn-danger btn-xs" ng-click="devuelve(ppto)" tooltip="Devolucion">
+								<span class="glyphicon glyphicon-share"></span>
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+	</div>
+
+</div>

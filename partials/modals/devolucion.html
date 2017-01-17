@@ -1,0 +1,16 @@
+<!-- devolucion.html -->
+<div class="modal-header">
+    <h3>¿Que motiva la devoluión de...</h3>
+    <div class="modal-title">{{compro.article}} de {{compro.proveidor}}</div>
+</div>
+<div class="modal-body">
+    <div>
+    	<div class="input-group">	
+        	<span><input type="text" size="250" class="form-control" ng-model="motivo"></span>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="cancel()">Cancelar</button>
+    <button class="btn btn-warning" ng-click="save()">Hacer devolución</button>
+</div>

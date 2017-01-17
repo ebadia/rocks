@@ -1,0 +1,46 @@
+<div class="page page-dashboard">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Ratio de Aprobacion {{variable}}</div>
+                    <progressbar class="progressbar progress-striped" value="100" type="success" ng-show="!data">Wait...</progressbar>
+                    <barchart id="ratios" val="data" data-options="chart_options" class="grafic"></barchart>
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+
+</div>
+
+<div class="page page-dashboard taula">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>Ratio de Aprobacion {{variable}}</div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th> Año </th>
+                        <th> Realizados </th>
+                        <th> Previstos </th>
+                        <th> Propuestos </th>
+                        <th> Ratio </th>
+                    </tr>
+                    <tr ng-repeat="dato in data">
+                        <td> {{dato.ano}} </td>
+                        <td> {{dato.realizado}} </td>
+                        <td> {{dato.tres}} </td>
+                        <td> {{dato.previsto}} </td>
+                        <td> {{dato.aprobado}}% </td>
+                    </tr>
+                </table>
+
+                </div>
+            </section>            
+
+        </div>        
+    </div>
+</div>
+

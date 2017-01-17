@@ -1,0 +1,49 @@
+
+
+.centrat {
+    text-align: center;
+    color: #fff;
+}
+
+.Rechazados {
+    background-color: #f00;
+}
+
+.dreta {
+    float: right;
+}
+
+.ui-datepicker {
+    table {
+        margin: 0 5px;
+        th,
+        td {
+            padding: 1px;
+        }
+    }
+}
+
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+
+    /*body {-webkit-print-color-adjust: exact !important;}*/
+
+    .page, .page-dashboard, .panel, .panel-default { background-color: #fff; }
+    .panel-heading { background-color: #00f; }
+
+}
+
+
+#Se { background-color: #f00; }
+#Ac { background-color: #0f0; }
+#Co { background-color: #00f; }
+#Re { background-color: #000; }
+
+
+
+
+

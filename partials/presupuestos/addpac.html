@@ -1,0 +1,35 @@
+<div class="page page-dashboard">
+	<a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span data-i18n="Nuevo Presupuesto"></span></strong>
+		</div>
+		<div class="panel-body">
+			<div class="form-container">
+				<!-- ===================== -->
+				<!-- formulario de entrada -->
+				<!-- GESDEN  -->
+				<!-- ===================== -->
+				<form ng-submit="getPresusPacGesdent(pac)" novalidate  class="form-horizontal">	
+					<div class="form-group">
+						<label for="" class="col-sm-2">Paciente</label>
+						<div class="col-sm-10">
+						    <input type="text" class="form-control" data-ng-model="pac.numpac" autofocus>
+						</div>
+					</div>
+
+					<button type="submit" class="btn btn-success btn-block" ng-disabled="loginForm.$invalid">Localiza</button>
+				</form>
+			</div>
+
+		</div>
+
+		<div class="panel-body">
+			<div ng-show="pacient">Paciente localizado: {{pacient}}</div>
+		</div>
+		
+	</div>
+</div>

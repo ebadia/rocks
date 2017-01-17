@@ -1,0 +1,62 @@
+<div class="page page-dashboard">
+
+<!-- tabla -->
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Tableau 1 ({{centronom}}/{{ano}})</span></strong>
+
+			<div class="divider"></div>
+
+			<div class="no-print">
+				<div class="btn-group" ng-repeat="i in [2013,2014,2015,2016,2017,2018,2019,2020]">
+					<button type="button" class="btn btn-default" ng-click="setAno(i)">{{i}}</button>
+				</div>                        
+				<div class="divider"></div>
+				<div class="btn-group" ng-repeat="centro in centros">
+					<button type="button" class="btn btn-default" ng-click="setCentro(centro.id,centro.nom)">{{centro.nom}}</button>
+				</div>                        
+				<div class="divider"></div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-success" ng-click="todos(centro,ano)">Calcula</button>
+				</div>
+				<div class="divider"></div>
+				<div ng-show="ano">
+					<select class="form-control" ng-model="res" ng-options="variable.id for variable in variables" ng-change="ratiosCentros(res,ano)"></select>
+				</div>                       
+			</div>
+		</div>
+		<div class="panel-body">
+			<div ng-hide="recalls"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+			<table class="table" table-condensed ng-show="recalls">
+				<thead>
+					<tr>
+						<th>({{centronom}}/{{ano}})</th>
+						<th>Entregados</th>
+						<th>PRES</th>
+						<th>TICKET</th>
+						<th>FsP</th>
+						<th>EXITO</th>
+						<th>Actos</th>
+						<th>PrecioM</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat="ppto in recalls">
+						<td>{{ppto.var}}<br/>/{{ppto.ciudad}}</td>
+						<td>{{ppto.entregado}}</td>
+						<td>{{ppto.PMP}}</td>
+						<td>{{ppto.TPC}}</td>
+						<td>{{ppto.Efectividad}}</td>
+						<td>{{ppto.OC}}</td>
+						<td>{{ppto.actosok}}</td>
+						<td>{{ppto.PrecioM}}</td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+<!-- tabla -->
+</div>

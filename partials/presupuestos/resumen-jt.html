@@ -1,0 +1,222 @@
+<div class="page page-dashboard">
+    <a href="#!/presupuestos" type="button" class="btn btn-warning btn-sm">
+        <span class="glyphicon glyphicon-arrow-left"></span>
+    </a>
+
+	<!-- stats -->
+	<div class="panel panel-default">
+
+		<div class="divider"></div>
+
+		<!--div><slider floor="1" ceiling="12" step="1" precision="1" ng-model="mes"></div-->
+		<div class="btn-group" ng-repeat="i in [2013,2014,2015,2016,2017,2018,2019,2020]">
+			<button type="button" class="btn btn-default" ng-click="setAno(i)">{{i}}</button>
+		</div>                        
+		<div class="divider"></div>
+		<!-- <span style="float: right;">
+			<button type="button" class="btn btn-success" ng-click="init()"><span class="glyphicon glyphicon-refresh"></span></button>
+		</span> -->
+		<div class="btn-group" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12]">
+			<button type="button" class="btn btn-default" ng-click="setMes(i)">{{i}}</button>
+		</div>                        
+
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span>Resumen del mes {{mes}}/{{any}}</span></strong>
+			<button class="btn btn-sm btn-warning" ng-click="pulsame()" ng-show="user.super == '1'"><span class="glyphicon glyphicon-send"></span> Correo </button>
+		</div>
+		<div class="panel-body">
+
+			<!-- //////////////// -->
+			<!-- FILA DE OBJETIVO -->
+			<!-- //////////////// -->
+
+			<div class="row" ng-show="user.privilegis_id == '0'">
+
+				<div class="col-lg-12 col-xsm-12">
+					<div class="panel panel-profile">
+			            <div class="panel-heading text-center bg-info">
+			                <h3 class="ng-binding">Objetivo</h3>
+			            </div>
+			            <div class="list-justified-container">
+			                <ul class="list-justified text-center">
+			                    <li>
+			                    	<div>
+			                       	 	<p class="size-h3">{{objetivo}}</p>
+			                        	<p class="text-muted">Euros</p>
+			                        </div>
+			                        <p>
+			                        	<progressbar animate="true" value="easypiechart.ratioexito" type="success"><b>{{easypiechart.ratioexito}}%</b></progressbar>
+									</p>
+			                    </li>
+			                </ul>
+			            </div>
+			        </div>
+			    </div>
+
+		    </div>
+
+			<!-- //////////////// -->
+			<!-- PROPUESTO / EXITO / OPORTUNIDADES -->
+			<!-- //////////////// -->
+
+			<div class="row" ng-show="user.privilegis_id == '0'">
+
+				<!-- PROPUESTO -->
+
+				<div class="col-lg-6 col-xsm-6">
+					<div class="panel panel-profile">
+			            <div class="panel-heading text-center bg-info">
+			                <h3 class="ng-binding">Propuesto</h3>
+			            </div>
+			            <div class="list-justified-container">
+			                <ul class="list-justified text-center">
+			                    <li>
+			                        <p class="size-h3">{{feina.dentregado}}</p>
+			                        <p class="text-muted">Euros</p>
+			                    </li>
+			                    <li>
+			                        <p class="size-h3">{{feina.entregado}}</p>
+			                        <p class="text-muted">Número</p>
+			                    </li>
+			                    <li>
+			                        <p class="size-h3">{{feina.TMA}}</p>
+			                        <p class="text-muted">TMP</p>
+			                    </li>
+			                </ul>
+			            </div>
+			        </div>
+			    </div>
+
+				<!-- EXITO -->
+
+				<div class="col-lg-6 col-xsm-6">
+					<div class="panel panel-profile">
+			            <div class="panel-heading text-center bg-info">
+			                <h3 class="ng-binding">Éxito</h3>
+			            </div>
+			            <div class="list-justified-container">
+			                <ul class="list-justified text-center">
+			                    <li>
+			                        <p class="size-h3">{{exito.daprobado}}</p>
+			                        <p class="text-muted">Euros</p>
+			                    </li>
+			                    <li>
+			                        <p class="size-h3">{{exito.aprobado}}</p>
+			                        <p class="text-muted">Número</p>
+			                    </li>
+			                    <li>
+			                        <p class="size-h3">{{exito.raprobado}}</p>
+			                        <p class="text-muted">TMA</p>
+			                    </li>
+			                </ul>
+			            </div>
+			        </div>
+			    </div>
+
+		    </div>
+
+		    <!-- //////////////// -->
+			<!-- PROPUESTO / EXITO / OPORTUNIDADES -->
+			<!-- //////////////// -->
+
+			<div class="row">
+
+				<!-- OPORTUNIDADES -->
+
+				<div class="col-lg-12 col-xsm-12">
+					<div class="panel panel-profile">
+			            <div class="panel-heading text-center bg-info">
+			                <h3 class="ng-binding">Oportunidades</h3>
+			            </div>
+			            <div class="list-justified-container" ng-show="user.privilegis_id == '0'">
+			                <ul class="list-justified text-center">
+			                    <li>
+			                        <p class="size-h3">{{oportunidad.dseguimiento}}</p>
+			                        <p class="text-muted">Euros</p>
+			                    </li>
+			                    <li>
+			                        <p class="size-h3">{{oportunidad.seguimiento}}</p>
+			                        <p class="text-muted">Número</p>
+			                    </li>
+			                    <li>
+			                        <p class="size-h3">{{oportunidad.TMS}}</p>
+			                        <p class="text-muted">TMS</p>
+			                    </li>
+			                </ul>
+			            </div>
+			            <div class="list-justified-container">
+			                <ul class="list-justified text-center">
+			                    <li>
+			                        <p class="size-h3">{{oportunidad.A}}</p>
+			                        <p class="text-muted">A</p>
+			                        <p class="text-muted">{{oportunidad.dA}}</p>
+			                        <p><button class="btn btn-sm btn-success" ng-click="lista('A')"><span class="glyphicon glyphicon-list"></span> Lista A</button></p>
+			                    </li>
+			                    <li>
+			                        <p class="size-h3">{{oportunidad.B}}</p>
+			                        <p class="text-muted">B</p>
+			                        <p class="text-muted">{{oportunidad.dB}}</p>
+			                        <p><button class="btn btn-sm btn-info" ng-click="lista('B')"><span class="glyphicon glyphicon-list"></span> Lista B</button></p>
+			                    </li>
+			                    <li>
+			                        <p class="size-h3">{{oportunidad.C}}</p>
+			                        <p class="text-muted">C</p>
+			                        <p class="text-muted">{{oportunidad.dC}}</p>
+			                        <p><button class="btn btn-sm btn-warning" ng-click="lista('C')"><span class="glyphicon glyphicon-list"></span> Lista C</button></p>
+			                    </li>
+			                </ul>
+			            </div>
+			        </div>
+			    </div>
+
+		    </div>
+
+			<!-- //////////////// -->
+			<!-- LISTADO DE OPORTUNIDADES -->
+			<!-- //////////////// -->
+
+		    <div class="row">
+			    <div class="panel panel-default">
+			    	<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span>Oportunidades {{tipo}}</strong></div>
+			    	<table class="table" ng-show="listado">
+			    	    <thead>
+			    	        <tr>
+			    	        	<th>#</th>
+			    	            <th>Paciente</th>
+			    	            <th>Importe</th>
+			    	            <th>Tratamiento</th>
+			    	            <th>Entrega</th>
+			    	        </tr>
+			    	    </thead>
+			    	    <tbody ng-repeat="ppto in listado">
+			    	        <tr>
+			    	        	<td>
+			    	        		<a type="button" class="btn btn-warning btn-xs" href="#!/addRecall/{{ppto.NumPac}}/{{ppto.pacient}}">
+			    	        			<span class="glyphicon glyphicon-bullhorn"></span>
+			    	        		</a>
+			    	        		<a href="#!/listaRecalls/{{ppto.NumPac}}/{{ppto.pacient}}">
+			    	        			<span class="badge badge-danger" ng-show="ppto.recalls">{{ppto.recalls}}</span>
+			    	        		</a>
+			    	        	</td>
+			    	            <td>
+			    	            	<a type="button" class="btn btn-info btn-xs" href="#!/verPacPpto/{{ppto.NumPac}}">
+			    	            		<span class="glyphicon glyphicon-play"></span>
+			    	            	</a>
+			    	            	<strong>{{ppto.pacient}}</strong></td>
+			    	            <td>{{ppto.import}}</td>
+			    	            <td>{{ppto.tto}}</td>
+			    	            <td>{{ppto.entrega}}</td>
+			    	        </tr>
+			    	        <tr>
+			    	        	<td>&nbsp;</td>
+			    	        	<td colspan="4"><span class="text-primary">{{ppto.notas}}</span></td>
+			    	        </tr>
+			    	    </tbody>
+			    	</table>
+			    </div>
+			</div>
+
+		</div>
+	</div>
+
+</div>

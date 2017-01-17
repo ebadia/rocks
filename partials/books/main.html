@@ -1,0 +1,182 @@
+<div class="page page-dashboard">
+	<!--a href="#!/verPacPpto/{{ppto.NumPac}}" type="button" class="btn btn-warning btn-sm">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+	</a-->
+
+
+	<div ng-show="!cargado">Cargando...</div>
+	<div ng-show="cargado">
+
+<div>{{contenido}}</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong><span class="glyphicon glyphicon-th"></span><span data-i18n="Impresión de Presupuestos"></span></strong>
+		<span style="float: right;">
+			
+		</span>
+		</div>
+
+		<div class="panel-body">
+			<div class="form-container">
+
+				<!-- ===================== -->
+				<!-- formulario de entrada -->
+				<!-- ===================== -->
+				<form ng-submit="descarga(ppto)" novalidate  class="form-horizontal">	
+					<div class="form-group">
+						<!--label for="" class="col-sm-2">Responsable</label-->
+						<div class="col-sm-10">
+						    <input type="hidden" class="form-control" data-ng-model="ppto.id">
+						    <input type="hidden" class="form-control" data-ng-model="ppto.responsable_id">
+						    <input type="hidden" class="form-control" data-ng-model="ppto.centre_id">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Paciente</label>
+						<div class="col-sm-10">
+						    <input type="text" class="form-control" data-ng-model="ppto.pacient" autofocus>
+						</div>
+					</div>
+<!-- 					<div class="form-group">
+						<label for="" class="col-sm-2">Doctor</label>
+						<div class="col-sm-10">
+						    <input type="text" class="form-control" data-ng-model="ppto.doctor">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Tratamiento</label>
+						<div class="col-sm-10">
+						    <input type="text" class="form-control" data-ng-model="ppto.motiu_id.nom">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Tratamiento Detallado</label>
+						<div class="col-sm-10">
+						    <textarea name="" id="" class="form-control" rows="4" data-ng-model="ppto.detalle"></textarea>
+						</div> 
+					</div> -->
+					<div>
+						<dl class="dl-horizontal">
+							<label for="" class="col-sm-2">Idioma</label>
+							<dd>
+								<label class="ui-radio"><input type="radio" ng-model="ppto.idioma" value="cas"><span>Castellano</span></label>
+								<label class="ui-radio"><input type="radio" ng-model="ppto.idioma" value="cat"><span>Català</span></label>
+							</dd>
+						</dl>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Colectivo</label>
+						<div class="col-sm-10">
+						    <select class="form-control" ng-model="ppto.colectivo" ng-options="colectivo.nom for colectivo in colectivos" ng-change="colectivo(ppto.colectivo, ppto.import)" ng-init="ppto.colectivo = colectivo"></select>
+						    <!--span>{{ppto.dto1}} # {{ppto.dto2}} # {{ppto.dto3}} # {{ppto.dto4}}</span-->
+						</div>
+					</div>
+					<div class="form-group" ng-show="quecolectivos">
+						<label for="" class="col-sm-2">Colectivo Especifico</label>
+						<div class="col-sm-10">
+						    <select class="form-control" data-ng-model="ppto.quecolectivo" data-ng-options="colectivo.nom for colectivo in quecolectivos" ng-change="quecolectivo(ppto.quecolectivo)" ng-init="ppto.quecolectivo.nom = quecolectivo.nom"></select>
+						    <!--span>{{ppto.dto1}} # {{ppto.dto2}} # {{ppto.dto3}} # {{ppto.dto4}}</span-->
+							<div id="name">
+								{{quecolectivo.comentarios}}
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Coste</label>
+						<div class="col-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon">€</span>
+								<input type="text" class="form-control" data-ng-model="ppto.import" ng-change="colectivo(ppto.colectivo, ppto.import)">
+								<span class="input-group-addon">.00</span>
+							</div>
+						    <!--span>{{ppto.c1}} # {{ppto.c2}} # {{ppto.c3}} # {{ppto.c4}}</span>
+						    <br/><span>{{ppto.meses}} meses</span>
+						    <br/><span>{{ppto.entrada}} entrada</span>
+						    <br/><span>{{ppto.cuota}} cuota</span>
+						    <br/><span>{{ppto.cuotasin}} cuota sin</span-->
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Frontdesk Nombre</label>
+							<div class="col-sm-10">
+								<input type="text" id="" class="form-control" rows="4" data-ng-model="ppto.frontdesk">
+							</div>
+					</div>
+					<!--div class="form-group">
+						<label for="" class="col-sm-2">Frontdesk Telefono</label>
+							<div class="col-sm-10">
+								<input type="text" id="" class="form-control" rows="4" data-ng-model="ppto.frontdesktel">
+							</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">Frontdesk email</label>
+							<div class="col-sm-10">
+								<input type="text" id="" class="form-control" rows="4" data-ng-model="ppto.frontdeskmail">
+							</div>
+					</div-->
+					
+					<!------ Incluyes y no incluyes ------------------------------------------>
+<!-- 					<div class="form-group">
+						<label for="" class="col-sm-2">Incluye (escoger opciones)</label>
+						<div ng-hide="incluyes"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+						<div class="col-sm-10">
+						    	<div data-ng-repeat="incluye in incluyes">
+									<input id="{{incluye.id}}" value="{{incluye.nom}}" type="checkbox" 
+									data-ng-checked="ppto.incluye.indexOf(incluye.id) > -1" ng-click="toggleIncluye(incluye)"/>
+									{{incluye.nom | limitTo:100 }}...
+								</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2">No Incluye (escoger opciones)</label>
+						<div ng-hide="noincluyes"><i class="fa fa-spinner fa-spin"></i> Cargando datos...</div>
+						<div class="col-sm-10">
+						    	<div data-ng-repeat="noincluye in noincluyes">
+									<input id="{{noincluye.id}}" value="{{noincluye.nom}}" type="checkbox" 
+									data-ng-checked="ppto.noincluye.indexOf(noincluye.id) > -1" ng-click="toggleNoIncluye(noincluye)"/>
+									 {{noincluye.nom | limitTo:100 }}...
+								</div>
+						</div>
+					</div> -->
+					<!------ Fin de Incluyes y no incluyes -------------------------------------------->
+					
+					<button type="submit" class="btn btn-success btn-block" ng-disabled="loginForm.$invalid">Generar</button>
+					<p id="downloadify"> You must have Flash 10 installed to download this file. </p>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<button type="button" class="btn btn-warning btn-sm" ng-click="verlo(ppto);" ng-show="!ver">Ver detalle</button>
+			<button type="button" class="btn btn-warning btn-sm" ng-click="ocultarlo();" ng-show="ver">Ocultar detalle</button>
+		</div>
+		<div class="panel-body" ng-show="ver">
+			<div><h1>Propuesta de tratamiento </h1></div>
+			<div>{{lastags.coste}}</div>
+			<div>{{lastags.textocolectivo}}</div>
+
+			<div><h3>Opción Pago Único </h3></div>
+			<div>El pago del tratamiento se efectúa de una sola vez al inicio del tratamiento.</div>
+			<div>{{lastags.textodto1}}</div>
+			<div>{{lastags.costefinal1}}</div>
+
+			<div><h3>Opción Por Tratamiento</h3></div>
+			<div>El pago del tratamiento se efectúa en el momento en que se realiza cada una de las intervenciones previstas.</div>
+			<div>{{lastags.textodto2}}</div>
+			<div>{{lastags.costefinal2}}</div>
+
+			<div><h3>Opción Pago Fraccionado</h3></div>
+			<div>El pago del tratamiento se efectúa  mediante un pago al inicio y en mensualidades sin intereses.</div>
+			<div>{{lastags.textodto3}}</div>
+			<div>{{lastags.costefinal3}}</div>
+			<div>Pagándose una entrada de {{lastags.entrada}} (30%) y una cuota de {{lastags.cuota}}/mes durante {{lastags.meses}} meses.</div>
+		</div>
+	</div>
+	
+
+
+	</div>
+</div>

@@ -1,0 +1,357 @@
+<div class="page page-dashboard">
+    <!-- stats -->
+    <div class="panel panel-default no-print">
+        <div class="panel-heading">
+            <strong><span class="glyphicon glyphicon-th"></span><span>RocksResumen. Seguimiento de presupuestos</span></strong>&nbsp;
+            <!--button class="btn btn-sm btn-warning hidden-print" ng-click="pulsame()" ng-show="user.super == '1'">
+                <span class="glyphicon glyphicon-send"></span>Correo 
+            </button-->
+        </div>
+        <div class="panel-body" data-pg-name="Panel body">
+            <div class="row">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12"> 
+                    <form class="form-normal">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <div class="input-group"> 
+                                    <span title="desde" class="control-label">
+    desde:&nbsp;</span>
+                                    <input placeholder="desde" size="2" ng-model="real.ddia">
+                                    <input placeholder="desde" size="2" ng-model="real.dmes">
+                                    <input placeholder="desde" size="4" ng-model="real.dany">
+                                </div>                                 
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <div class="input-group">
+                                    <span title="desde" class="control-label">
+    hasta: &nbsp;</span>
+                                    <input placeholder="hasta" size="2" ng-model="real.hdia">
+                                    <input placeholder="hasta" size="2" ng-model="real.hmes">
+                                    <input placeholder="hasta" size="4" ng-model="real.hany">                                     
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="hidden-print col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <div class="">
+                                        <button class="btn btn-warning btn-xs btn-block" tooltip="Calcula" ng-click="calcula(real)">Calcula</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+            <!-- //////////////// -->
+            <!-- FILA DE FACTURACION -->
+            <!-- //////////////// -->
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span ng-show="vengodeformulario"><strong>Facturación </strong> ( desde {{real.ddia}}/{{real.dmes}}/{{real.dany}} / hasta {{real.hdia}}/{{real.hmes}}/{{real.hany}})</span>
+            <span ng-hide="vengodeformulario"><strong>Facturación </strong> (hasta {{real.hdia}}/{{real.hmes}}/{{real.hany}})</span>
+        </div>
+        <div class="panel-body" data-pg-name="Panel body">
+            <div class="row" ng-show="user.privilegis_id == '0'" data-pg-name="Propuesto">
+                <!-- PROPUESTO -->
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="panel panel-profile" ng-hide="vengodeformulario">
+                        <div class="panel-heading text-center bg-info">
+                            <h4 class="ng-binding">Ultima semana</h4>
+                        </div>
+                        <div class="list-justified-container">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{factweek}}</p>
+                                    <p class="text-muted">Euros</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- EXITO -->
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <div class="panel panel-profile" >
+                        <div class="panel-heading text-center bg-info">
+                            <h4 class="ng-binding">Acum. mensual</h4>
+                        </div>
+                        <div class="list-justified-container">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{factmes}}</p>
+                                    <p class="text-muted">Euros</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="panel panel-profile">
+                        <div class="panel-heading text-center bg-info">
+                            <h4 class="ng-binding">Acum. Anual</h4>
+                        </div>
+                        <div class="list-justified-container" ng-show="user.privilegis_id == '0'" ng-hide="vengodeformulario">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{factany}}</p>
+                                    <p class="text-muted">Euros</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+            <!-- //////////////// -->
+            <!-- ULTIMOS 7 DIAS -->
+            <!-- //////////////// -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span ng-show="vengodeformulario"><strong>Rango</strong> ( desde {{real.ddia}}/{{real.dmes}}/{{real.dany}} / hasta {{real.hdia}}/{{real.hmes}}/{{real.hany}})</span>
+            <span ng-hide="vengodeformulario"><strong>Ultimos 7 dias</strong> (hasta {{real.hdia}}/{{real.hmes}}/{{real.hany}})</span>
+        </div>
+        <div class="panel-body" data-pg-name="Panel body">
+            <div class="row" ng-show="user.privilegis_id == '0'" data-pg-name="Propuesto">
+                <!-- PROPUESTO -->
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="panel panel-profile">
+                        <div class="panel-heading text-center bg-info">
+                            <h4 class="ng-binding">Entregados</h4>
+                        </div>
+                        <div class="list-justified-container">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{feina.dentregado}}</p>
+                                    <p class="text-muted">Euros</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{feina.entregado}}</p>
+                                    <p class="text-muted">Actos</p>
+                                <li>
+                                    <p class="size-h3">{{pfeina.pentregado}}</p>
+                                    <p class="text-muted">Pptos</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- EXITO -->
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <div class="panel panel-profile">
+                        <div class="panel-heading text-center bg-info">
+                            <h4 class="ng-binding">Aprobados</h4>
+                        </div>
+                        <div class="list-justified-container">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{feina.daceptado}}</p>
+                                    <p class="text-muted">Euros</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{feina.aceptado}}</p>
+                                    <p class="text-muted">Actos</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{pfeina.paceptado}}</p>
+                                    <p class="text-muted">Pptos</p>
+                                </li>
+                                <!--li class="hidden hidden-print">
+                                    <p class="size-h3">{{feina.TMA}}</p>
+                                    <p class="text-muted">TMA</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{feina.rexit}}%</p>
+                                    <p class="text-muted">Exito</p>
+                                </li-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="panel panel-profile">
+                        <div class="panel-heading text-center bg-info">
+                            <h4 class="ng-binding">Rechazados</h4>
+                        </div>
+                        <div class="list-justified-container" ng-show="user.privilegis_id == '0'">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{feina.drechazado}}</p>
+                                    <p class="text-muted">Euros</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{feina.rechazado}}</p>
+                                    <p class="text-muted">Actos</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{pfeina.prechazado}}</p>
+                                    <p class="text-muted">Pptos</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+            <!-- //////////////// -->
+            <!-- ULTIMOS 30 DIAS -->
+            <!-- //////////////// -->
+    <div class="panel panel-default" ng-hide="vengodeformulario">
+        <div class="panel-heading">
+            <strong>Ultimos 30 dias</strong> (hasta {{real.hdia}}/{{real.hmes}}/{{real.hany}})
+        </div>
+        <div class="panel-body" data-pg-name="Panel body">
+            <div class="row" ng-show="user.privilegis_id == '0'" data-pg-name="Propuesto">
+                <!-- PROPUESTO -->
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="panel panel-profile">
+                        <div class="panel-heading text-center bg-info">
+                            <h4 class="ng-binding">Entregados</h4>
+                        </div>
+                        <div class="list-justified-container">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{mfeina.dentregado}}</p>
+                                    <p class="text-muted">Euros</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{mfeina.entregado}}</p>
+                                    <p class="text-muted">Actos</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{pmfeina.pentregado}}</p>
+                                    <p class="text-muted">Pptos</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- EXITO -->
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <div class="panel panel-profile">
+                        <div class="panel-heading text-center bg-info">
+                            <h4 class="ng-binding">Aprobados</h4>
+                        </div>
+                        <div class="list-justified-container">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{mfeina.daceptado}}</p>
+                                    <p class="text-muted">Euros</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{mfeina.aceptado}}</p>
+                                    <p class="text-muted">Actos</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{pmfeina.paceptado}}</p>
+                                    <p class="text-muted">Pptos</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="panel panel-profile">
+                        <div class="panel-heading text-center bg-info">
+                            <h4 class="ng-binding">Rechazados</h4>
+                        </div>
+                        <div class="list-justified-container" ng-show="user.privilegis_id == '0'">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{mfeina.drechazado}}</p>
+                                    <p class="text-muted">Euros</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{mfeina.rechazado}}</p>
+                                    <p class="text-muted">Actos</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{pmfeina.prechazado}}</p>
+                                    <p class="text-muted">Pptos</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- //////////////// -->
+    <!-- CARTERA DEL AÑO  -->
+    <!-- //////////////// -->
+    <div class="panel panel-default" ng-hide="vengodeformulario">
+        <div class="panel-heading">
+            <strong>Cartera del año</strong> ()
+        </div>
+        <div class="panel-body" data-pg-name="Panel body">
+            <div class="row" ng-show="user.privilegis_id == '0'" data-pg-name="Cartera">
+                <!-- PROPUESTO -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="panel panel-profile">
+                        <div class="panel-heading text-center bg-info">
+                            <h4 class="ng-binding">Cartera de Aceptados</h4>
+                        </div>
+                        <div class="list-justified-container">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{cartera}}</p>
+                                    <p class="text-muted">Euros</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- //////////////// -->
+    <!-- PROPUESTO / EXITO / OPORTUNIDADES -->
+    <!-- //////////////// -->
+    <!-- //////////////// -->
+    <!-- LISTADO DE OPORTUNIDADES -->
+    <!-- //////////////// -->
+    <!--div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>Listado de seguimiento ultimos 30 dias: {{cuentalistado}} pacientes</strong> (hasta {{real.hdia}}/{{real.hmes}}/{{real.hany}})
+        </div>
+        <div class="panel-body" data-pg-name="Panel body">
+            <table class="table" ng-show="listado">
+                <thead>
+                    <tr>
+                        <th>Entrega</th>
+                        <th>Paciente</th>
+                        <th>Tratamiento</th>
+                        <th>Importe</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="ppto in listado">
+                    <tr>
+                        <td>{{ppto.entrega}}</td>
+                        <td>
+                            <strong>{{ppto.pacient}}</strong>
+                        </td>
+                        <td>{{ppto.tto}}</td>
+                        <td>{{ppto.import}}</td>
+                        <td>{{ppto.estat}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <div class="text-primary">{{ppto.notas}}</div>
+                            <div class="text-warning">{{ppto.nota}}</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div-->
+</div>

@@ -1,0 +1,197 @@
+<div class="page page-dashboard">
+    <!-- stats -->
+    <div class="panel panel-default">
+        <!--div><slider floor="1" ceiling="12" step="1" precision="1" ng-model="mes"></div-->         
+        <!-- <span style="float: right;">
+			<button type="button" class="btn btn-success" ng-click="init()"><span class="glyphicon glyphicon-refresh"></span></button>
+		</span> -->         
+        <div class="panel-heading" data-pg-collapsed>
+            <strong><span class="glyphicon glyphicon-th"></span><span>RocksResumen. Seguimiento de presupuestos</span></strong>&nbsp;
+            <button class="btn btn-sm btn-warning" ng-click="pulsame()" ng-show="user.super == '1'">
+                <span class="glyphicon glyphicon-send"></span>Correo 
+            </button>
+        </div>
+        <div class="panel-body" data-pg-name="Panel body">
+            <div class="row">
+                <div class="col-md-12"> 
+                    <hr class="hidden-print">
+                    <form ng-submit="feina(real)" class="">
+                        <fieldset class="pg-empty-placeholder hidden-print">
+                            <button type="submit" class="btn btn-warning btn-xs btn-block" tooltip="Sigue">Calcula</button>
+                        </fieldset>
+                        <hr>
+                        <fieldset>
+                            <label title="desde" class="control-label">
+                                desde:&nbsp;
+</label>
+                            <input placeholder="desde" size="2" ng-model="real.ddia">
+                            <input placeholder="desde" size="2" ng-model="real.dmes">
+                            <input placeholder="desde" size="4" ng-model="real.dany">
+                        </fieldset>
+                        <fieldset>
+                            <label title="desde" class="control-label">
+                                hasta: &nbsp;
+</label>
+                            <input placeholder="hasta" size="2" ng-model="real.hdia">
+                            <input placeholder="hasta" size="2" ng-model="real.hmes">
+                            <input placeholder="hasta" size="4" ng-model="real.hany">
+                        </fieldset>
+                    </form>
+                    <hr class="hidden-print">
+                </div>
+            </div>
+            <!-- //////////////// -->
+            <!-- FILA DE OBJETIVO -->
+            <!-- //////////////// -->
+            <!-- //////////////// -->
+            <!-- PROPUESTO / EXITO / OPORTUNIDADES -->
+            <!-- //////////////// -->
+            <div class="row" ng-show="user.privilegis_id == '0'" data-pg-name="Propuesto">
+                <!-- PROPUESTO -->
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="panel panel-profile">
+                        <div class="panel-heading text-center bg-info">
+                            <h3 class="ng-binding">Entregados</h3>
+                        </div>
+                        <div class="list-justified-container">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{feina.dentregado}}</p>
+                                    <p class="text-muted">Euros</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{feina.entregado}}</p>
+                                    <p class="text-muted">Número</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{feina.TMP}}</p>
+                                    <p class="text-muted">TMP</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- EXITO -->
+                <div class="col-lg-4 col-xs-4 col-sm-4 col-md-4">
+                    <div class="panel panel-profile">
+                        <div class="panel-heading text-center bg-info">
+                            <h3 class="ng-binding">Aprobados</h3>
+                        </div>
+                        <div class="list-justified-container">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{feina.daceptado}}</p>
+                                    <p class="text-muted">Euros</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{feina.aceptado}}</p>
+                                    <p class="text-muted">Número</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{feina.TMA}}</p>
+                                    <p class="text-muted">TMA</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{feina.rexit}}%</p>
+                                    <p class="text-muted">Exito</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xs-4 col-sm-4 col-md-4">
+                    <div class="panel panel-profile">
+                        <div class="panel-heading text-center bg-info">
+                            <h3 class="ng-binding">Seguimiento</h3>
+                        </div>
+                        <div class="list-justified-container" ng-show="user.privilegis_id == '0'">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{feina.dseguimiento}}</p>
+                                    <p class="text-muted">Euros</p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{feina.seguimiento}}</p>
+                                    <p class="text-muted">Número</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="list-justified-container">
+                            <ul class="list-justified text-center">
+                                <li>
+                                    <p class="size-h3">{{oportunidad.A}}</p>
+                                    <p class="text-muted">A</p>
+                                    <p class="text-muted">{{oportunidad.dA}}</p>
+                                    <p><button class="btn btn-sm btn-success" ng-click="lista('A')">
+                                            <span class="glyphicon glyphicon-list"></span> Lista A
+                                        </button></p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{oportunidad.B}}</p>
+                                    <p class="text-muted">B</p>
+                                    <p class="text-muted">{{oportunidad.dB}}</p>
+                                    <p><button class="btn btn-sm btn-info" ng-click="lista('B')">
+                                            <span class="glyphicon glyphicon-list"></span> Lista B
+                                        </button></p>
+                                </li>
+                                <li>
+                                    <p class="size-h3">{{oportunidad.C}}</p>
+                                    <p class="text-muted">C</p>
+                                    <p class="text-muted">{{oportunidad.dC}}</p>
+                                    <p><button class="btn btn-sm btn-warning" ng-click="lista('C')">
+                                            <span class="glyphicon glyphicon-list"></span> Lista C
+                                        </button></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //////////////// -->
+            <!-- PROPUESTO / EXITO / OPORTUNIDADES -->
+            <!-- //////////////// -->
+            <!-- //////////////// -->
+            <!-- LISTADO DE OPORTUNIDADES -->
+            <!-- //////////////// -->
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong><span class="glyphicon glyphicon-th"></span>Oportunidades {{tipo}}</strong>
+                    </div>
+                    <table class="table" ng-show="listado">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Paciente</th>
+                                <th>Importe</th>
+                                <th>Tratamiento</th>
+                                <th>Entrega</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="ppto in listado">
+                            <tr>
+                                <td>
+                                    <a type="button" class="btn btn-warning btn-xs" href="#!/addRecall/{{ppto.NumPac}}/{{ppto.pacient}}"><span class="glyphicon glyphicon-bullhorn"></span></a>
+                                    <a href="#!/listaRecalls/{{ppto.NumPac}}/{{ppto.pacient}}"><span class="badge badge-danger" ng-show="ppto.recalls">{{ppto.recalls}}</span></a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn btn-info btn-xs" href="#!/verPacPpto/{{ppto.NumPac}}"><span class="glyphicon glyphicon-play"></span></a>
+                                    <strong>{{ppto.pacient}}</strong>
+                                </td>
+                                <td>{{ppto.import}}</td>
+                                <td>{{ppto.tto}}</td>
+                                <td>{{ppto.entrega}}</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td colspan="4">
+                                    <span class="text-primary">{{ppto.notas}}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
