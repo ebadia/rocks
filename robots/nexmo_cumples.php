@@ -1,16 +1,16 @@
 <?php
-// ejecutar con argumentos 
+// ejecutar con argumentos
 //      1: que es el codigo de ciudad
 //      2: centro dentro de la ciudad
 
-    //-- TextMagic  
+    //-- TextMagic
     echo "\n";
 	require_once "./nexmo/vendor/autoload.php";
 
     //---------------------------------------------------
-    //-- Variables de control del script para desarrollo  
+    //-- Variables de control del script para desarrollo
     // envia un sms real si test = 0
-    $test = 1;  
+    $test = 1;
     // envia solo al telefono de test si enviaauno = 1
     $enviaauno = 0;
     // pone los sms en rocks si rocks = 1
@@ -29,26 +29,26 @@
 // Datos de las conexiones a los dos sistemas
 // **************************************
     require 'conn-clinicas.php';
-// ********************************* 
+// *********************************
     $db = getConnectionGesdent($id);
-// ********************************* 
-// ********************************* 
+// *********************************
+// *********************************
     require 'conn-rocks.php';
-// ********************************* 
+// *********************************
     $dbh = getConnectionRocks();
-// ********************************* 
+// *********************************
 
     // definicion del sql de recuperacion de pacientes
 
     $sql = "
         select Nombre, Apellidos, TelMovil,datediff ( year , FecNacim, CAST(GETDATE() AS DATE) ) as cumple
         from Pacientes
-        where 
+        where
         ( day(FecNacim) = day( CAST(GETDATE() AS DATE) ) )
         and
         ( month(FecNacim) = month( CAST(GETDATE() AS DATE) ) )
         and TelMovil is not NULL
-        and Pacientes.AceptaSMS = 1 
+        and Pacientes.AceptaSMS = 1
     ";
 
 // **************************************
@@ -106,13 +106,13 @@
                 // echo $destino['Movil']."\n";
 
                 //-- construimos texto del mensaje de recordatorio
-     
+
                 if (  $destino['TelMovil'] == ""  ){
-                
+
                     $text = "Numero de telefono inexistente";
-                
+
                 } else {
-                    
+
                     //-- construimos texto del mensaje de recordatorio
                     if ( $id == 1 || $id == 2 ){
                         //-- CATALA
@@ -129,7 +129,8 @@
                         $inicio = "Hola ". ucwords( iconv("CP1252", "UTF-8", $destino['Nombre'] ) ). ", el equipo de Enéresi Especialistas Médicos Dentales te desea un ¡feliz cumpleaños!\n";
                     }
 
-                    $text = utf8_decode( $inicio );
+                    // $text = utf8_decode( $inicio );
+                    $text = ( $inicio );
 
                     if ( $enviaauno == 0 ) {
                         // limpiamos el numero de espacios, puntos, guiones
@@ -147,7 +148,7 @@
                     // echo ucwords( iconv("CP1252", "UTF-8", $destino['Nombre'] ) )."\n";
                      echo $text."\n";
                      echo "==========================\n";
-                
+
                     if ( $test == 0 ) {
                         if (  $to != "" && strlen($to) == 11 && $to[2] != '9' ) {
                             //-- enviamos mensaje
@@ -155,20 +156,20 @@
                             	'to' => $to,
                             	'from' => 'Eneresi',
                             	'text' => $text
-    
+
                             ]);
-    
+
                             // $response = $api->send( $text, array($to), true );
                             // print_r($response);
-                            echo "Sent message to " . $message['to'] . ". Balance is now " . $message['remaining-balance'   ] . PHP_EOL;
-    
+                            echo "Sent message to " . $response['to'] . ". Balance is now " . $response['remaining-balance'] . PHP_EOL;
+
                             } else {
                             // si el nuemro es incorrecto se salta el envio
                             $text = "Numero de telefono incorrecto";
                         }
-                        
+
                         // esperamos un momento para evitar enviar mas de 30 por segundo
-                        time_nanosleep(0, 35000000);
+                        time_nanosleep(0, 50000000);
 
                     }
                 }
@@ -187,7 +188,7 @@
                     $stmt = $dbh->prepare($sqlr);
                     $pide = $stmt->execute();
                 }
-  
+
             }
 
 
@@ -202,7 +203,7 @@
         // FINAL
         // **************************************
 
-        mssql_free_result($query);
+        // mssql_free_result($query);
 
     } catch(PDOException $e) {
         echo '{"error": 2, "data": {"text":'. $e->getMessage() .'}}';
