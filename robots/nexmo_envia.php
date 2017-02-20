@@ -1,16 +1,16 @@
 <?php
-// ejecutar con argumentos 
+// ejecutar con argumentos
 //      1: que es el codigo de ciudad
 //      2: centro dentro de la ciudad
 
-    //-- TextMagic  
+    //-- TextMagic
     echo "\n";
 	require_once "./nexmo/vendor/autoload.php";
 
     //---------------------------------------------------
-    //-- Variables de control del script para desarrollo  
+    //-- Variables de control del script para desarrollo
     // envia un sms real si test = 0
-    $test = 1;  
+    $test = 1;
     // envia solo al telefono de test si enviaauno = 1
     $enviaauno = 0;
     // pone los sms en rocks si rocks = 1
@@ -36,16 +36,16 @@
 // Datos de las conexiones a los dos sistemas
 // **************************************
     require 'conn-clinicas.php';
-// ********************************* 
+// *********************************
     $db = getConnectionGesdent($id);
-// ********************************* 
-// ********************************* 
+// *********************************
+// *********************************
     require 'conn-rocks.php';
-// ********************************* 
+// *********************************
     $dbh = getConnectionRocks();
-// ********************************* 
+// *********************************
 
-    
+
     // definicion del sql de recuperacion de pacientes
 
     // selecciona si hay subcentros en instalaciones multicentro
@@ -58,7 +58,7 @@
             // molina
             $subcentro = " and DCitas.IdCentro = 2 ";
             break;
-        
+
         default:
             $subcentro = " ";
             break;
@@ -70,16 +70,16 @@
             convert(varchar, cast(CAST(hora / 86399.0 as datetime) as time), 108) as quehora,
             Pacientes.Nombre, Pacientes.Apellidos,
             tusuagd.Descripcio as boxllarg,
-            
+
             ROW_NUMBER() OVER (PARTITION BY DCitas.Movil ORDER BY DCitas.hora ASC) as num
-            
+
             from Pacientes
-            
+
             right join DCitas on  Pacientes.idpac = DCitas.idpac
             left join tusuagd on DCitas.idusu=tusuagd.idusu
-            
+
             WHERE
-            DCitas.Fecha = CAST(CAST('".$fecha."' AS DATETIME) AS INT) + 2 
+            DCitas.Fecha = CAST(CAST('".$fecha."' AS DATETIME) AS INT) + 2
             ". $subcentro ."
             and DCitas.IdSitC = 0
             /* si acepta sms o es una primera visita = null en idpac y aceptasms */
@@ -87,7 +87,7 @@
             and DCItas.Movil <> ''
         ) xx
         where xx.num = 1
-        order by IdUsu    
+        order by IdUsu
     ";
 
 // **************************************
@@ -145,7 +145,7 @@
                 // echo $destino['Movil']."\n";
 
                 //-- construimos texto del mensaje de recordatorio
-     
+
                 if ( $id == 1 || $id == 2 || $id == 6 || $id == 8 ){
                     //-- CATALA
                     //-- para poder poner en castellano/catalan? la fecha de la cita
@@ -170,7 +170,7 @@
                     $date = DateTime::createFromFormat("Ymd", $fecha);
 
                     if ( $id == 3 || $id == 4 || $id == 7 ) $clinica = "Clinica Dental Enéresi. ";
-                    
+
                     $inicio = ucwords( iconv("CP1252", "UTF-8", $destino['Nombre'] ) ) . " te recordamos tu cita del ";
                     $nombredeldia = strftime("%A",$date->getTimestamp()) . " ";
                     $nombredelmes = strftime("%B",$date->getTimestamp()) . " ";
@@ -182,7 +182,7 @@
                 }
 
                 //$text = utf8_decode( $inicio . $nombredeldia . $dia . $nombredelmes . $hora . $confirma );
-                $text = utf8_decode( $clinica . $inicio . $dia . $mes . $hora . $confirma );
+                $text =  ( $clinica . $inicio . $dia . $mes . $hora . $confirma ) ;
 
                 if ( $enviaauno == 0 ) {
                     // limpiamos el numero de espacios, puntos, guiones
@@ -199,7 +199,7 @@
                 // echo ucwords( iconv("CP1252", "UTF-8", $destino['Nombre'] ) )."\n";
                  echo $text."\n";
                  echo "==========================\n";
-                
+
                 if ( $test == 0 ) {
                     if (  $to != "" && strlen($to) == 11 && $to[2] != '9' ) {
                         //-- enviamos mensaje
@@ -211,7 +211,7 @@
 
                         // $response = $api->send( $text, array($to), true );
                         // print_r($response);
-                        echo "Sent message to " . $message['to'] . ". Balance is now " . $message['remaining-balance'] . PHP_EOL;
+                        echo "Sent message to " . $response['to'] . ". Balance is now " . $response['remaining-balance'] . PHP_EOL;
 
                         //-- poner el resultado en la BD de Gesdent (marcar enviado SMS de la cita) y Rocks
                         // -- actualiza Gesdent
@@ -221,7 +221,7 @@
                             $sql = "UPDATE DCitas set Recordada = 9 WHERE IdUsu = ". $destino['idusu'] ." AND IdOrden = ". $destino['idorden'];
                         }
                         $query2 = mssql_query($sql);
-                        mssql_free_result($query2);
+                        // mssql_free_result($query2);
 
                     } else {
                         // si el nuemro es incorrecto se salta el envio
@@ -229,7 +229,7 @@
                     }
 
                     // esperamos un momento para evitar enviar mas de 30 por segundo
-                    time_nanosleep(0, 35000000);
+                    time_nanosleep(0, 50000000);
                 }
 
                 if ( $rocks == 1 ) {
@@ -266,7 +266,7 @@
                     $stmt = $dbh->prepare($sqlr);
                     $pide = $stmt->execute();
                 }
-    
+
             }
 
         } else {
@@ -279,7 +279,7 @@
         // FINAL
         // **************************************
 
-        mssql_free_result($query);
+        // mssql_free_result($query);
 
     } catch(PDOException $e) {
         echo '{"error": 2, "data": {"text":'. $e->getMessage() .'}}';
